@@ -1,0 +1,94 @@
+<!----- Nav Bar ----->
+
+<mat-toolbar color="primary" class="example-toolbar">
+  <div class="Container-icon-menu">
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <!-- Nombre del Curso -->
+    <h1 appTitleFontSize class="example-app-name">Cursos Code Lab</h1>
+  </div>
+
+  <ng-container *ngIf="CambioDeIdioma">
+    <a (click)="MetodoCambioDeIdioma('en')">
+      <img
+        style="width: 45px; height: 30px; border: none"
+        src="data:image/png;base64,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"
+      />
+    </a>
+  </ng-container>
+  <ng-container *ngIf="!CambioDeIdioma">
+    <a (click)="MetodoCambioDeIdioma('es')">
+      <img
+        style="width: 45px; height: 30px; border: none"
+        src="data:image/png;base64,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"
+      />
+    </a>
+  </ng-container>
+  <div>
+    <!-- Boton de opciones -->
+
+    <button
+      mat-icon-button
+      aria-label="Example icon button with a vertical three dot icon"
+    >
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+
+<!-------- SIDENAV --------->
+
+<mat-sidenav-container
+  class="example-sidenav-container"
+  [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
+>
+  <mat-sidenav
+    class="SideNav"
+    #snav
+    [mode]="mobileQuery.matches ? 'over' : 'side'"
+    [fixedInViewport]="mobileQuery.matches"
+    fixedTopGap="56"
+  >
+    <mat-nav-list>
+      <!----------------BOTON DE INICIO---------------->
+
+      <div mat-icon-button class="ContainerHome">
+        <mat-icon class="Icono">home</mat-icon>
+        <a routerLink="/" translate="BotonHome"></a>
+      </div>
+      <br />
+
+      <!----------------BOTON DE CURSOS---------------->
+
+      <div mat-icon-button class="ContainerContact">
+        <mat-icon class="Icono">book</mat-icon>
+        <a routerLink="/Cursos" translate="BotonCursos"></a>
+      </div>
+      <br />
+
+      <!----------------BOTON INICIO DE SESION---------------->
+
+      <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+        <!-- <button (click)="auth.logout()">Log out</button> -->
+        <div mat-icon-button class="ContainerContact" routerLink="/Login">
+          <mat-icon class="Icono">logout</mat-icon>
+          <a (click)="auth.logout()" translate="BotonLogOut"></a>
+        </div>
+      </ng-container>
+
+      <ng-template #loggedOut>
+        <div mat-icon-button class="ContainerContact" routerLink="/Login">
+          <mat-icon class="Icono">account_circle</mat-icon>
+          <a (click)="auth.loginWithRedirect()" translate="BotonLogin"></a>
+        </div>
+      </ng-template>
+      <br />
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content style="background-color: tr"> </mat-sidenav-content>
+</mat-sidenav-container>
+
+<div *ngIf="!shouldRun">Please open on Stackblitz to see result</div>

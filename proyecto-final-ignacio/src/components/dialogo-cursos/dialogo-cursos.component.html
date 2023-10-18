@@ -1,0 +1,174 @@
+<h1 mat-dialog-title *ngIf="Curso" translate="EditarCurso"></h1>
+<h1 mat-dialog-title *ngIf="!Curso" translate="CrearCurso"></h1>
+<div mat-dialog-content>
+  <main style="display: flex; justify-content: center">
+    <div class="ContainerFormCreacion">
+      <br />
+      <br />
+      <br />
+      <br />
+
+      <!------------------------------- FORMULARIO PARA EDITAR ALUMNO ----------------------------->
+
+      <ng-container *ngIf="Curso">
+        <form [formGroup]="CrearCurso">
+          <!--------------NOMBRE--------------->
+
+          <mat-form-field appearance="outline">
+            <mat-label translate="LabelNombreForm"></mat-label>
+            <input formControlName="nombre" matInput />
+            <mat-error translate="ErrorNombreForm"></mat-error>
+          </mat-form-field>
+          <br />
+
+          <!---------------DESCRIPCION---------------->
+          <br />
+          <mat-form-field appearance="outline">
+            <mat-label translate="LabelDescripcionForm"></mat-label>
+            <input formControlName="descripcion" matInput />
+            <mat-error translate="ErrorDescripcionForm"></mat-error>
+          </mat-form-field>
+          <br />
+
+          <!---------------PROFESOR---------------->
+          <br />
+          <mat-form-field appearance="outline">
+            <mat-label translate="LabelProfesorForm"></mat-label>
+            <input formControlName="profesor" matInput />
+            <mat-error translate="ErrorProfesorForm"></mat-error>
+          </mat-form-field>
+          <br />
+
+          <!---------------AREA---------------->
+          <br />
+          <mat-form-field appearance="outline">
+            <mat-label translate="LabelSelectCursos"></mat-label>
+            <mat-select formControlName="area">
+              <mat-option>None</mat-option>
+              <mat-option
+                value="Programación y Desarrollo"
+                translate="OptionProgramaciónDesarrollo"
+              ></mat-option>
+              <mat-option value="Diseño" translate="OptionDiseño"></mat-option>
+              <mat-option
+                value="Seguridad"
+                translate="OptionSeguridad"
+              ></mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br />
+
+          <!---------------VACANTES---------------->
+          <br />
+          <mat-form-field appearance="outline">
+            <mat-label translate="LabelVacantesForm"></mat-label>
+            <input formControlName="vacantes" type="number" matInput />
+            <mat-error translate="ErrorVacantesForm"></mat-error>
+          </mat-form-field>
+          <br />
+
+          <!--------------------BOTONES-------------------->
+
+          <div class="ContainerBotones">
+            <button
+              (click)="OnEdit()"
+              type="submit"
+              mat-raised-button
+              color="primary"
+              translate="BotonEditarCurso"
+            ></button>
+
+            <button
+              mat-button
+              color="primary"
+              translate="BotonNoGracias"
+              (click)="onNoClick()"
+            ></button>
+          </div>
+          <br />
+        </form>
+      </ng-container>
+
+      <!------------------------------- FORMULARIO PARA CREAR ALUMNO ----------------------------->
+
+      <ng-container *ngIf="!Curso">
+        <form [formGroup]="CrearCurso">
+          <!--------------NOMBRE--------------->
+
+          <mat-form-field appearance="outline">
+            <mat-label translate="LabelNombreForm"></mat-label>
+            <input formControlName="nombre" matInput />
+            <mat-error translate="ErrorNombreForm"></mat-error>
+          </mat-form-field>
+          <br />
+
+          <!---------------DESCRIPCION---------------->
+          <br />
+          <mat-form-field appearance="outline">
+            <mat-label translate="LabelDescripcionForm"></mat-label>
+            <input formControlName="descripcion" matInput />
+            <mat-error translate="ErrorDescripcionForm"></mat-error>
+          </mat-form-field>
+          <br />
+
+          <!---------------PROFESOR---------------->
+          <br />
+          <mat-form-field appearance="outline">
+            <mat-label translate="LabelProfesorForm"></mat-label>
+            <input formControlName="profesor" matInput />
+            <mat-error translate="ErrorProfesorForm"></mat-error>
+          </mat-form-field>
+          <br />
+
+          <!---------------AREA---------------->
+          <br />
+          <mat-form-field appearance="outline">
+            <mat-label translate="LabelSelectCursos"></mat-label>
+            <mat-select formControlName="area">
+              <mat-option>None</mat-option>
+              <mat-option
+                value="Programación y Desarrollo"
+                translate="OptionProgramaciónDesarrollo"
+              ></mat-option>
+              <mat-option value="Diseño" translate="OptionDiseño"></mat-option>
+              <mat-option
+                value="Seguridad"
+                translate="OptionSeguridad"
+              ></mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br />
+
+          <!---------------VACANTES---------------->
+          <br />
+          <mat-form-field appearance="outline">
+            <mat-label translate="LabelVacantesForm"></mat-label>
+            <input formControlName="vacantes" type="number" matInput />
+            <mat-error translate="ErrorVacantesForm"></mat-error>
+          </mat-form-field>
+          <br />
+
+          <!--------------------BOTONES-------------------->
+
+          <div class="ContainerBotones">
+            <button
+              (click)="OnSubmit()"
+              type="submit"
+              mat-raised-button
+              color="primary"
+              translate="BotonCrearCurso"
+            ></button>
+
+            <button
+              mat-button
+              color="primary"
+              translate="BotonNoGracias"
+              (click)="onNoClick()"
+            ></button>
+          </div>
+          <br />
+        </form>
+      </ng-container>
+    </div>
+  </main>
+</div>

@@ -1,0 +1,188 @@
+<h1 mat-dialog-title *ngIf="Alumno" translate="EditarAlumno"></h1>
+<h1 mat-dialog-title *ngIf="!Alumno" translate="CrearAlumno"></h1>
+<div mat-dialog-content>
+  <main style="display: flex; justify-content: center">
+    <div class="ContainerFormCreacion">
+      <!-------- SI EL ALUMNO NO EXISTE --------->
+      <img class="ImagenAlumno" *ngIf="ImagenUser" [src]="ImagenUser" />
+      <!-------- SI EL ALUMNO EXISTE --------->
+
+      <img *ngIf="Alumno" [src]="Alumno.imagen" class="ImageAlumno" />
+
+      <br />
+      <br />
+      <br />
+      <br />
+
+      <!------------------------------- FORMULARIO PARA EDITAR ALUMNO ----------------------------->
+
+      <ng-container *ngIf="Alumno">
+        <form [formGroup]="CrearAlumno">
+          <!--------------NOMBRE--------------->
+
+          <mat-form-field appearance="outline">
+            <mat-label translate="LabelNombreForm"></mat-label>
+            <input formControlName="nombre" matInput />
+            <mat-error translate="ErrorNombreForm"></mat-error>
+          </mat-form-field>
+          <br />
+
+          <!---------------APELLIDO---------------->
+          <br />
+          <mat-form-field appearance="outline">
+            <mat-label translate="LabelApellidoForm"></mat-label>
+            <input formControlName="apellido" matInput />
+            <mat-error translate="ErrorApellidoForm"></mat-error>
+          </mat-form-field>
+          <br />
+
+          <!---------------EDAD---------------->
+          <br />
+          <mat-form-field appearance="outline">
+            <mat-label translate="LabelEdadForm"></mat-label>
+            <input formControlName="edad" type="number" matInput />
+            <mat-error translate="ErrorEdadForm"></mat-error>
+          </mat-form-field>
+          <br />
+
+          <!---------------IMAGEN---------------->
+          <br />
+          <mat-form-field appearance="outline">
+            <mat-label translate="LabelImagenForm"></mat-label>
+            <input formControlName="imagen" matInput />
+          </mat-form-field>
+          <br />
+
+          <!---------------CURSANDO---------------->
+          <br />
+          <mat-form-field appearance="outline">
+            <mat-label translate="LabelFromSelect"></mat-label>
+            <mat-select formControlName="cursando">
+              <mat-option>None</mat-option>
+              <mat-option
+                value="Esta Cursando"
+                translate="OptionEstaCursado"
+              ></mat-option>
+              <mat-option
+                value="Abandono"
+                translate="OptionAbandono"
+              ></mat-option>
+              <mat-option
+                value="Finalizo"
+                translate="OptionFinalizo"
+              ></mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br />
+
+          <!--------------------BOTONES-------------------->
+
+          <div class="ContainerBotones">
+            <button
+              (click)="OnEdit()"
+              type="submit"
+              mat-raised-button
+              color="primary"
+              translate="BotonGuardarForm"
+            ></button>
+
+            <button
+              mat-button
+              color="primary"
+              type="button"
+              translate="BotonNoGracias"
+              (click)="onNoClick()"
+            ></button>
+          </div>
+          <br />
+        </form>
+      </ng-container>
+
+      <!------------------------------- FORMULARIO PARA CREAR ALUMNO ----------------------------->
+
+      <ng-container *ngIf="!Alumno">
+        <form [formGroup]="CrearAlumno">
+          <!--------------NOMBRE--------------->
+
+          <mat-form-field appearance="outline">
+            <mat-label translate="LabelNombreForm"></mat-label>
+            <input formControlName="nombre" matInput />
+            <mat-error translate="ErrorNombreForm"></mat-error>
+          </mat-form-field>
+          <br />
+
+          <!---------------APELLIDO---------------->
+          <br />
+          <mat-form-field appearance="outline">
+            <mat-label translate="LabelApellidoForm"></mat-label>
+            <input formControlName="apellido" matInput />
+            <mat-error translate="ErrorApellidoForm"></mat-error>
+          </mat-form-field>
+          <br />
+
+          <!---------------EDAD---------------->
+          <br />
+          <mat-form-field appearance="outline">
+            <mat-label translate="LabelEdadForm"></mat-label>
+            <input formControlName="edad" type="number" matInput />
+            <mat-error translate="ErrorEdadForm"></mat-error>
+          </mat-form-field>
+          <br />
+
+          <!---------------IMAGEN---------------->
+          <input
+            formControlName="imagen"
+            class="InputImagen"
+            type="file"
+            accept="image/"
+            (change)="ChageUploadImage($event)"
+          />
+          <br />
+
+          <!---------------CURSANDO---------------->
+
+          <mat-form-field appearance="outline">
+            <mat-label translate="LabelFromSelect"></mat-label>
+            <mat-select formControlName="cursando">
+              <mat-option>None</mat-option>
+              <mat-option
+                value="Esta Cursando"
+                translate="OptionEstaCursado"
+              ></mat-option>
+              <mat-option
+                value="Abandono"
+                translate="OptionAbandono"
+              ></mat-option>
+              <mat-option
+                value="Finalizo"
+                translate="OptionFinalizo"
+              ></mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <br />
+
+          <!--------------------BOTONES-------------------->
+
+          <div class="ContainerBotones">
+            <button
+              (click)="OnSubmit()"
+              type="submit"
+              mat-raised-button
+              color="primary"
+              translate="BotonCrearAlumno"
+            ></button>
+
+            <button
+              mat-button
+              color="primary"
+              translate="BotonNoGracias"
+              (click)="onNoClick()"
+            ></button>
+          </div>
+          <br />
+        </form>
+      </ng-container>
+    </div>
+  </main>
+</div>
