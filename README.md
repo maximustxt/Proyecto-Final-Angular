@@ -9,7 +9,7 @@ npm start
 1*- DIRIJIRSE A LA CARPETA INDEX . TS Y CAMBIAR EL PUERTO DONDE ESCUCHA EL SERVIDOR A OTRO PUERTO.
 
 ```bash
-server.listen(4000, () => {
+server.listen(5000, () => {
   console.log("Servidor levantado con exito!");
 });
 
