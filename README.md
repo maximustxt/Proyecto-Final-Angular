@@ -6,7 +6,7 @@ npm start
 
 ## EN CASO DE TIRAR ERROR EL SERVIDOR DE LA CARPETA API :
 
-1*- DIRIJIRSE A LA CARPETA INDEX . TS Y CAMBIAR EL PUERTO DONDE ESCUCHA EL SERVIDOR A OTRO PUERTO.
+## Dirijirse a la carpeta Index.ts  y cambiar el puerto donde escucha el servidor a otro puerto.
 
 ```bash
 server.listen(5000, () => {
