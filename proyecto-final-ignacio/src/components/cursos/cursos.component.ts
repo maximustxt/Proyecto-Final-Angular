@@ -1,21 +1,21 @@
-import { Component, ViewChild } from "@angular/core";
-import { MatDialog } from "@angular/material/dialog";
-import { MatPaginator } from "@angular/material/paginator";
-import { MatTableDataSource } from "@angular/material/table";
+import { Component, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 //*- SERVICES :
-import { CursosService } from "src/Services/Cursos/cursos.service";
+import { CursosService } from 'src/Services/Cursos/cursos.service';
 
 //*- INTERFACE :
-import { ICursos } from "src/common/Interfaces";
+import { ICursos } from 'src/common/Interfaces';
 
 //*- COMPONENTE DIALOGO :
-import { DialogoCursosComponent } from "../dialogo-cursos/dialogo-cursos.component";
+import { DialogoCursosComponent } from '../dialogo-cursos/dialogo-cursos.component';
 
 @Component({
-  selector: "app-cursos",
-  templateUrl: "./cursos.component.html",
-  styleUrls: ["./cursos.component.scss"],
+  selector: 'app-cursos',
+  templateUrl: './cursos.component.html',
+  styleUrls: ['./cursos.component.scss'],
 })
 export class CursosComponent {
   constructor(public dialog: MatDialog, private ServiceCurso: CursosService) {}
@@ -23,12 +23,12 @@ export class CursosComponent {
   Cursos!: ICursos[];
 
   displayedColumns: string[] = [
-    "Nombre",
-    "Descripcion",
-    "Profesor",
-    "Area",
-    "Vacantes",
-    "Acciones",
+    'Nombre',
+    'Descripcion',
+    'Profesor',
+    'Area',
+    'Vacantes',
+    'Acciones',
   ];
 
   dataSource = new MatTableDataSource(this.Cursos);
@@ -64,7 +64,7 @@ export class CursosComponent {
 
   EditCurso(Curso: ICursos) {
     this.dialog
-      .open(DialogoCursosComponent, { data: Curso, width: "500px" })
+      .open(DialogoCursosComponent, { data: Curso })
       .afterClosed()
       .subscribe({
         next: (Curso) => {
@@ -84,7 +84,7 @@ export class CursosComponent {
 
   openDialog(): void {
     this.dialog
-      .open(DialogoCursosComponent, { width: "500px" })
+      .open(DialogoCursosComponent)
       .afterClosed()
       .subscribe({
         next: (Curso) => {

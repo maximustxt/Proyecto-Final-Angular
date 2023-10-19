@@ -4,7 +4,7 @@
   "TituloListaAlumnos": "STUDIENT LIST",
   "BotonCrearAlumno": "Add +",
   "LabelList": "Filter",
-  "ColumnaFullname": "Name and Surname",
+  "ColumnaFullname": "FullName",
   "ColumnaEdad": "Age",
   "ColumnaImagen": "Image",
   "ColumnaCursando": "Studying",

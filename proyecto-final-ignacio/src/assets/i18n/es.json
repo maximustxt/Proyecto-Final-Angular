@@ -4,7 +4,7 @@
   "TituloListaAlumnos": "LISTA DE ALUMNOS",
   "BotonCrearAlumno": "Agregar +",
   "LabelList": "Filtrar",
-  "ColumnaFullname": "Nombre y Apellido",
+  "ColumnaFullname": "FullNombre",
   "ColumnaEdad": "Edad",
   "ColumnaImagen": "Imagen",
   "ColumnaCursando": "Cursando",

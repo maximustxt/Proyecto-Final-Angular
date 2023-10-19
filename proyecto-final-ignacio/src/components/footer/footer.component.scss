@@ -8,3 +8,18 @@
   justify-content: center;
   align-items: center;
 }
+
+h1 {
+  font-size: 20px;
+}
+
+//*- ESTILOS PARA MOVILES :
+
+@media (max-width: 500px) {
+  h1 {
+    font-size: 15px;
+  }
+  .ContainerFooter {
+    width: 110%;
+  }
+}

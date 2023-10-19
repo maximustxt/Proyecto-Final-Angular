@@ -22,7 +22,7 @@
     <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input />
   </mat-form-field>
 
-  <div style="width: 96%" class="mat-elevation-z10">
+  <section class="mat-elevation-z10">
     <table mat-table [dataSource]="dataSource" matSort>
       <!-- Nombre Column -->
       <ng-container matColumnDef="Nombre">
@@ -118,7 +118,7 @@
         aria-label="Select page of users"
       ></mat-paginator>
     </ng-container>
-  </div>
+  </section>
 </main>
 <br />
 <br />

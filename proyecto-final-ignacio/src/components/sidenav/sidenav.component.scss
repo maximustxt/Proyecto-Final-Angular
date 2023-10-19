@@ -39,6 +39,7 @@ h1.example-app-name {
   top: 100px;
   left: 0;
   width: 200px;
+  height: 100vh;
   padding: 10px 10px;
 }
 
@@ -79,7 +80,30 @@ h1.example-app-name {
   z-index: 1000;
 }
 
+.ImagenPaises {
+  width: 45px;
+  height: 30px;
+  border: none;
+}
+
 a {
   text-decoration: none;
   color: black;
+}
+
+//*- ESTILOS PARA MOVILES :
+
+@media (max-width: 600px) {
+  .SideNav {
+    width: 160px;
+    height: 100vh;
+  }
+  mat-nav-list {
+    margin-top: 45px;
+  }
+  .ImagenPaises {
+    width: 35px;
+    height: 25px;
+    margin: 5px;
+  }
 }

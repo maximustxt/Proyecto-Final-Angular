@@ -1,27 +1,27 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 //- Interfaces :
-import { IAlumnos } from "../../common/Interfaces";
+import { IAlumnos } from '../../common/Interfaces';
 
 //*- SERVICIOS DE ALUMNO :
-import { AlumnosService } from "src/Services/Alumnos/alumnos.service";
+import { AlumnosService } from 'src/Services/Alumnos/alumnos.service';
 
 // Tabla :
-import { MatTableDataSource } from "@angular/material/table";
+import { MatTableDataSource } from '@angular/material/table';
 
 //- Paginacion :
-import { MatPaginator } from "@angular/material/paginator";
+import { MatPaginator } from '@angular/material/paginator';
 
 //- LocalStorage :
-import { MatDialog } from "@angular/material/dialog";
+import { MatDialog } from '@angular/material/dialog';
 
 //- Componente Dialogo :
-import { DialogoComponent } from "../../components/dialogo/dialogo.component";
+import { DialogoComponent } from '../../components/dialogo/dialogo.component';
 
 @Component({
-  selector: "app-alumnos",
-  templateUrl: "./alumnos.component.html",
-  styleUrls: ["./alumnos.component.scss"],
+  selector: 'app-alumnos',
+  templateUrl: './alumnos.component.html',
+  styleUrls: ['./alumnos.component.scss'],
 })
 export class AlumnosComponent implements OnInit {
   constructor(
@@ -32,11 +32,11 @@ export class AlumnosComponent implements OnInit {
   Alumnos!: IAlumnos[];
 
   displayedColumns: string[] = [
-    "Nombre",
-    "Edad",
-    "Imagen",
-    "Cursando",
-    "Acciones",
+    'Nombre',
+    'Edad',
+    'Imagen',
+    'Cursando',
+    'Acciones',
   ];
 
   dataSource = new MatTableDataSource(this.Alumnos);
@@ -72,7 +72,7 @@ export class AlumnosComponent implements OnInit {
 
   EditAlumno(Alumno: IAlumnos) {
     this.dialog
-      .open(DialogoComponent, { data: Alumno, width: "500px" })
+      .open(DialogoComponent, { data: Alumno })
       .afterClosed()
       .subscribe({
         next: (Alumno) => {
@@ -92,7 +92,7 @@ export class AlumnosComponent implements OnInit {
 
   openDialog(): void {
     this.dialog
-      .open(DialogoComponent, { width: "500px" })
+      .open(DialogoComponent)
       .afterClosed()
       .subscribe({
         next: (Alumno) => {
