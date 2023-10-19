@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 
 //- Interfaces :
 import { IAlumnos } from '../../common/Interfaces';
@@ -17,18 +17,26 @@ import { MatDialog } from '@angular/material/dialog';
 
 //- Componente Dialogo :
 import { DialogoComponent } from '../../components/dialogo/dialogo.component';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-alumnos',
   templateUrl: './alumnos.component.html',
   styleUrls: ['./alumnos.component.scss'],
 })
-export class AlumnosComponent implements OnInit {
+export class AlumnosComponent implements OnInit, OnDestroy {
   constructor(
     public dialog: MatDialog,
     private ServiceAlumno: AlumnosService
   ) {}
 
+  //- SUSCRIPTION :
+  Suscribe: Subscription = new Subscription();
+
+  //- OBSERVABLE :
+  Alumnos$!: Observable<any>;
+
+  //- ARRAY DE ALUMNOS :
   Alumnos!: IAlumnos[];
 
   displayedColumns: string[] = [
@@ -42,7 +50,9 @@ export class AlumnosComponent implements OnInit {
   dataSource = new MatTableDataSource(this.Alumnos);
 
   ngOnInit(): void {
-    this.ServiceAlumno.getAlumnos().subscribe((Alumnos: any) => {
+    this.Alumnos$ = this.ServiceAlumno.getAlumnos();
+
+    this.Suscribe = this.Alumnos$.subscribe((Alumnos: any) => {
       this.Alumnos = Alumnos;
       this.dataSource = new MatTableDataSource(this.Alumnos);
     });
@@ -62,7 +72,9 @@ export class AlumnosComponent implements OnInit {
   //*- ELIMINAR ALUMNO :
 
   eliminarAlumno(id: string) {
-    this.ServiceAlumno.deleteAlumnos(id).subscribe((Alumnos: any) => {
+    this.Alumnos$ = this.ServiceAlumno.deleteAlumnos(id);
+
+    this.Suscribe = this.Alumnos$.subscribe((Alumnos: any) => {
       this.Alumnos = Alumnos;
       this.dataSource = new MatTableDataSource(this.Alumnos);
     });
@@ -72,17 +84,17 @@ export class AlumnosComponent implements OnInit {
 
   EditAlumno(Alumno: IAlumnos) {
     this.dialog
-      .open(DialogoComponent, { data: Alumno })
+      .open(DialogoComponent, { data: Alumno, maxWidth: '100%' })
       .afterClosed()
       .subscribe({
         next: (Alumno) => {
           if (Alumno) {
-            this.ServiceAlumno.putAlumnos(Alumno._id, Alumno).subscribe(
-              (Alumnos: any) => {
-                this.Alumnos = Alumnos;
-                this.dataSource = new MatTableDataSource(this.Alumnos);
-              }
-            );
+            this.Alumnos$ = this.ServiceAlumno.putAlumnos(Alumno._id, Alumno);
+
+            this.Suscribe = this.Alumnos$.subscribe((Alumnos: any) => {
+              this.Alumnos = Alumnos;
+              this.dataSource = new MatTableDataSource(this.Alumnos);
+            });
           }
         },
       });
@@ -92,15 +104,22 @@ export class AlumnosComponent implements OnInit {
 
   openDialog(): void {
     this.dialog
-      .open(DialogoComponent)
+      .open(DialogoComponent, { maxWidth: '100%' })
       .afterClosed()
       .subscribe({
         next: (Alumno) => {
-          this.ServiceAlumno.postAlumnos(Alumno).subscribe((Alumnos: any) => {
+          this.Alumnos$ = this.ServiceAlumno.postAlumnos(Alumno);
+
+          this.Suscribe = this.Alumnos$.subscribe((Alumnos: any) => {
             this.Alumnos = Alumnos;
             this.dataSource = new MatTableDataSource(this.Alumnos);
           });
         },
       });
+  }
+
+  ngOnDestroy(): void {
+    // Cuando el componente se desmonta nos de-suscribimos.
+    this.Suscribe.unsubscribe();
   }
 }

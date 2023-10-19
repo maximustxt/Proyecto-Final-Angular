@@ -1,27 +1,37 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 //*- INTERFACE :
-import { IAlumnos } from "src/common/Interfaces";
+import { IAlumnos } from 'src/common/Interfaces';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class AlumnosService {
   constructor(private http: HttpClient) {}
 
   getAlumnos() {
-    return this.http.get("http://localhost:3500/Alumnos");
+    return this.http.get(
+      'https://servidor-proyecto-final-angular.onrender.com/Alumnos'
+    );
   }
 
   putAlumnos(ID: string, alumno: IAlumnos) {
-    return this.http.put(`http://localhost:3500/Alumnos/${ID}`, alumno);
+    return this.http.put(
+      `https://servidor-proyecto-final-angular.onrender.com/Alumnos/${ID}`,
+      alumno
+    );
   }
 
   deleteAlumnos(ID: string) {
-    return this.http.delete(`http://localhost:3500/Alumnos/${ID}`);
+    return this.http.delete(
+      `https://servidor-proyecto-final-angular.onrender.com/Alumnos/${ID}`
+    );
   }
 
   postAlumnos(alumno: IAlumnos) {
-    return this.http.post("http://localhost:3500/Alumnos", alumno);
+    return this.http.post(
+      'https://servidor-proyecto-final-angular.onrender.com/Alumnos',
+      alumno
+    );
   }
 }
