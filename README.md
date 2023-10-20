@@ -3,3 +3,10 @@
   <h5>Para saber mas del contenido del Back-End dejo la URL : </h5>
 
 📌 https://github.com/maximustxt/Back-end-Proyecto-Final-Angular
+
+<h3>Tambien este proyecto tiene deploy completo</h3>
+
+
+<h3>Aca dejo el deploy del proyecto :</h3>
+
+📌 https://proyecto-final-angular-six.vercel.app/
