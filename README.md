@@ -1,18 +1,12 @@
-## PARA LEVANTAR LA CARPETA API USAR EL COMANDO EN LA TERMINAL :  
+<h3>Este proyecto tiene creado su propio Back-End.... El mismo esta deployado en Render.</h3>  
 
-```bash
-npm start
-```
+  <h5>Para saber mas del contenido del Back-End dejo la URL : </h5>
 
-## EN CASO DE TIRAR ERROR EL SERVIDOR DE LA CARPETA API :
+📌 https://github.com/maximustxt/Back-end-Proyecto-Final-Angular
 
-## Dirijirse a la carpeta Index.ts  y cambiar el puerto donde escucha el servidor a otro puerto.
+<h3>Tambien este proyecto tiene deploy completo</h3>
 
-Esto puede ocurrir si estamos utilizando el mismo puerto en otro proyecto en nuestro sistema.
 
-```bash
-server.listen(5000, () => {
-  console.log("Servidor levantado con exito!");
-});
+<h3>Aca dejo el deploy del proyecto :</h3>
 
-```
+📌 https://proyecto-final-angular-six.vercel.app/
