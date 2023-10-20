@@ -34,4 +34,10 @@ export class AlumnosService {
       alumno
     );
   }
+
+  getCursosAlumnos() {
+    return this.http.get(
+      'https://servidor-proyecto-final-angular.onrender.com/Cursos/Nombres'
+    );
+  }
 }

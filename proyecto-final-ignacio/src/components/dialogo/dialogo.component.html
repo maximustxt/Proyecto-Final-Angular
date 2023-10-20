@@ -59,10 +59,10 @@
             <mat-label translate="LabelFromSelect"></mat-label>
             <mat-select formControlName="cursando">
               <mat-option
-                *ngFor="let options of valoresDelSelect"
-                [value]="options.value"
+                *ngFor="let Curso of CursosAlumnos$ | async"
+                [value]="Curso"
               >
-                {{ options.viewValue }}
+                {{ Curso }}
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -138,10 +138,10 @@
             <mat-label translate="LabelFromSelect"></mat-label>
             <mat-select formControlName="cursando">
               <mat-option
-                *ngFor="let options of valoresDelSelect"
-                [value]="options.value"
+                *ngFor="let Curso of CursosAlumnos$ | async"
+                [value]="Curso"
               >
-                {{ options.viewValue }}
+                {{ Curso }}
               </mat-option>
             </mat-select>
           </mat-form-field>

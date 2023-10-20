@@ -20,7 +20,7 @@
   "ErrorApellidoForm": "Campo Apellido Requerido",
   "ErrorEdadForm": "Campo Edad Requerido",
   "BotonNoGracias": "No Gracias",
-  "LabelFromSelect": "Estado De Cursada",
+  "LabelFromSelect": "Curso Donde Participa",
   "OptionEstaCursado": "Esta Cursando",
   "OptionAbandono": "Abandono",
   "OptionFinalizo": "Finalizo",

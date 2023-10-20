@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output, Inject } from '@angular/core';
+import { Component, EventEmitter, Output, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
 import axios from 'axios';
 
 //*- FORMULARIO :
@@ -11,18 +12,23 @@ import { ToastrService } from 'ngx-toastr';
 //*- INTERFACE :
 import { IAlumnos } from '../../common/Interfaces';
 
+//*- SERVICES :
+import { AlumnosService } from 'src/Services/Alumnos/alumnos.service';
+
 @Component({
   selector: 'app-dialogo',
   templateUrl: './dialogo.component.html',
   styleUrls: ['./dialogo.component.scss'],
 })
-export class DialogoComponent {
+export class DialogoComponent implements OnInit {
   CrearAlumno!: FormGroup;
   ImagenUser!: string;
+  CursosAlumnos$!: Observable<any>;
 
   constructor(
     private FB: FormBuilder,
     private toastr: ToastrService,
+    private ServiceAlumno: AlumnosService,
     public dialogRef: MatDialogRef<DialogoComponent>,
     @Inject(MAT_DIALOG_DATA) public Alumno?: IAlumnos
   ) {
@@ -37,6 +43,10 @@ export class DialogoComponent {
     if (this.Alumno?.edad) {
       this.CrearAlumno.patchValue(this.Alumno);
     }
+  }
+
+  ngOnInit() {
+    this.CursosAlumnos$ = this.ServiceAlumno.getCursosAlumnos();
   }
 
   //*- GETTER DE VALIDACION IMAGEN :
