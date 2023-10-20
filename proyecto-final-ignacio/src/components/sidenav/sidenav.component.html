@@ -29,12 +29,12 @@
   <div>
     <!-- Boton de opciones -->
 
-    <button
+    <!-- <button
       mat-icon-button
       aria-label="Example icon button with a vertical three dot icon"
     >
       <mat-icon>more_vert</mat-icon>
-    </button>
+    </button> -->
   </div>
 </mat-toolbar>
 
@@ -56,7 +56,7 @@
 
       <div mat-icon-button class="ContainerHome">
         <mat-icon class="Icono">home</mat-icon>
-        <a routerLink="/" translate="BotonHome"></a>
+        <a routerLink="/" (click)="snav.toggle()" translate="BotonHome"></a>
       </div>
       <br />
 
@@ -64,7 +64,11 @@
 
       <div mat-icon-button class="ContainerContact">
         <mat-icon class="Icono">book</mat-icon>
-        <a routerLink="/Cursos" translate="BotonCursos"></a>
+        <a
+          routerLink="/Cursos"
+          (click)="snav.toggle()"
+          translate="BotonCursos"
+        ></a>
       </div>
       <br />
 

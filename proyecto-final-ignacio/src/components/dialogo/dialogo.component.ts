@@ -1,20 +1,20 @@
-import { Component, EventEmitter, Output, Inject } from "@angular/core";
-import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
-import axios from "axios";
+import { Component, EventEmitter, Output, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import axios from 'axios';
 
 //*- FORMULARIO :
-import { FormGroup, Validators, FormBuilder } from "@angular/forms";
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 //*- ALERT :
-import { ToastrService } from "ngx-toastr";
+import { ToastrService } from 'ngx-toastr';
 
 //*- INTERFACE :
-import { IAlumnos } from "../../common/Interfaces";
+import { IAlumnos } from '../../common/Interfaces';
 
 @Component({
-  selector: "app-dialogo",
-  templateUrl: "./dialogo.component.html",
-  styleUrls: ["./dialogo.component.scss"],
+  selector: 'app-dialogo',
+  templateUrl: './dialogo.component.html',
+  styleUrls: ['./dialogo.component.scss'],
 })
 export class DialogoComponent {
   CrearAlumno!: FormGroup;
@@ -27,11 +27,11 @@ export class DialogoComponent {
     @Inject(MAT_DIALOG_DATA) public Alumno?: IAlumnos
   ) {
     this.CrearAlumno = this.FB.group({
-      nombre: ["", [Validators.required]],
-      apellido: ["", [Validators.required]],
+      nombre: ['', [Validators.required]],
+      apellido: ['', [Validators.required]],
       edad: [, [Validators.required]],
-      imagen: ["", [Validators.required]],
-      cursando: ["", [Validators.required]],
+      imagen: ['', [Validators.required]],
+      cursando: ['', [Validators.required]],
     });
 
     if (this.Alumno?.edad) {
@@ -42,30 +42,30 @@ export class DialogoComponent {
   //*- GETTER DE VALIDACION IMAGEN :
 
   get ValidacionImagen() {
-    return this.CrearAlumno.controls["imagen"];
+    return this.CrearAlumno.controls['imagen'];
   }
 
   //*- ALERTAS :
 
   AlertaAlumnoEditado() {
-    this.toastr.success("Felicitaciones", "Alumno Editado con exito!");
+    this.toastr.success('Felicitaciones', 'Alumno Editado con exito!');
   }
 
   AlertaAlumnoCreado() {
-    this.toastr.success("Felicitaciones", "Alumno Creado con exito!");
+    this.toastr.success('Felicitaciones', 'Alumno Creado con exito!');
   }
 
   AlertaCamposIncompletos() {
     this.toastr.error(
-      "Campos Incompletos",
-      "Debes completar todos los campos!"
+      'Campos Incompletos',
+      'Debes completar todos los campos!'
     );
   }
 
   AlertaErroresEnLosCampos() {
     this.toastr.error(
-      "Hay Errores en los campos",
-      "Debes corregir los errores!"
+      'Hay Errores en los campos',
+      'Debes corregir los errores!'
     );
   }
 
@@ -108,14 +108,20 @@ export class DialogoComponent {
   async ChageUploadImage(event: any) {
     const File_data = event.target.files[0];
     const datosImage = new FormData();
-    datosImage.append("file", File_data);
-    datosImage.append("upload_preset", "Angular_cloudinary");
-    datosImage.append("cloud_name", "dpp1n1qjs");
+    datosImage.append('file', File_data);
+    datosImage.append('upload_preset', 'Angular_cloudinary');
+    datosImage.append('cloud_name', 'dpp1n1qjs');
 
     const response = await axios.post(
-      "https://api.cloudinary.com/v1_1/dpp1n1qjs/image/upload",
+      'https://api.cloudinary.com/v1_1/dpp1n1qjs/image/upload',
       datosImage
     );
     this.ImagenUser = response.data.secure_url;
   }
+
+  valoresDelSelect: { value: string; viewValue: string }[] = [
+    { value: 'Esta Cursando', viewValue: 'Esta Cursando' },
+    { value: 'Abandono', viewValue: 'Abandono' },
+    { value: 'Finalizo', viewValue: 'Finalizo' },
+  ];
 }

@@ -32,7 +32,6 @@ export class CursosComponent implements OnInit, OnDestroy {
 
   displayedColumns: string[] = [
     'Nombre',
-    'Descripcion',
     'Profesor',
     'Area',
     'Vacantes',
