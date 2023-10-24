@@ -12,6 +12,7 @@ import { ICursos } from 'src/common/Interfaces';
 //*- COMPONENTE DIALOGO :
 import { DialogoCursosComponent } from '../dialogo-cursos/dialogo-cursos.component';
 import { Observable, Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cursos',
@@ -19,7 +20,11 @@ import { Observable, Subscription } from 'rxjs';
   styleUrls: ['./cursos.component.scss'],
 })
 export class CursosComponent implements OnInit, OnDestroy {
-  constructor(public dialog: MatDialog, private ServiceCurso: CursosService) {}
+  constructor(
+    public dialog: MatDialog,
+    private ServiceCurso: CursosService,
+    private router: Router
+  ) {}
 
   //- SUSCRIPTION :
   Suscribe: Subscription = new Subscription();
@@ -107,6 +112,10 @@ export class CursosComponent implements OnInit, OnDestroy {
           });
         },
       });
+  }
+
+  VerCurso(id: string) {
+    this.router.navigate(['DetailCursos', id]);
   }
 
   ngOnDestroy(): void {

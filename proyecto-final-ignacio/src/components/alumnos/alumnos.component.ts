@@ -18,6 +18,7 @@ import { MatDialog } from '@angular/material/dialog';
 //- Componente Dialogo :
 import { DialogoComponent } from '../../components/dialogo/dialogo.component';
 import { Observable, Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-alumnos',
@@ -27,7 +28,8 @@ import { Observable, Subscription } from 'rxjs';
 export class AlumnosComponent implements OnInit, OnDestroy {
   constructor(
     public dialog: MatDialog,
-    private ServiceAlumno: AlumnosService
+    private ServiceAlumno: AlumnosService,
+    private router: Router
   ) {}
 
   //- SUSCRIPTION :
@@ -116,6 +118,10 @@ export class AlumnosComponent implements OnInit, OnDestroy {
           });
         },
       });
+  }
+
+  VerAlumno(id: string) {
+    this.router.navigate(['DetailAlumno', id]);
   }
 
   ngOnDestroy(): void {

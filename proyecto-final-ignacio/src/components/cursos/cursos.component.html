@@ -70,14 +70,22 @@
           <div class="ContainerBotonsCrearDelete">
             <a
               class="IconEdit"
-              matTooltip="Editar Usuario"
+              matTooltip="Editar Curso"
               (click)="EditCurso(element)"
               ><mat-icon>edit</mat-icon></a
             >
+
+            <a
+              class="IconVisibility"
+              matTooltip="Ver Curso"
+              (click)="VerCurso(element._id)"
+              ><mat-icon>visibility</mat-icon></a
+            >
+
             <a
               (click)="eliminarCurso(element?._id)"
               class="IconDelete"
-              matTooltip="Eliminar Usuario"
+              matTooltip="Eliminar Curso"
               ><mat-icon>delete</mat-icon></a
             >
           </div>

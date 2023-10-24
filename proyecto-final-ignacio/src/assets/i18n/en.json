@@ -55,5 +55,13 @@
   "BotonLogOut": "Log Out",
   "AreaProgramacion": "Programming and Development",
   "AreaSeguridad": "Security",
-  "AreaDiseño": "Design"
+  "AreaDiseño": "Design",
+  "Curso de Angular": "Angular Course",
+  "Curso de Java": "Java Course",
+  "Curso de Python": "Python Course",
+  "Curso de Html y Css": "Html y Css Course",
+  "Curso de UX/UI": "UX/UI Course",
+  "Curso de Seguridad": "Seguridad Course",
+  "Curso de C++": "C++ Course",
+  "Curso de Sprint Boot": "Sprint Boot Course"
 }

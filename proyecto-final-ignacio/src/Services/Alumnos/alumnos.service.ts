@@ -15,6 +15,12 @@ export class AlumnosService {
     );
   }
 
+  getDetailAlumno(id: string) {
+    return this.http.get(
+      `https://servidor-proyecto-final-angular.onrender.com/Alumnos/${id}`
+    );
+  }
+
   putAlumnos(ID: string, alumno: IAlumnos) {
     return this.http.put(
       `https://servidor-proyecto-final-angular.onrender.com/Alumnos/${ID}`,

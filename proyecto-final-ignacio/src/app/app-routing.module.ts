@@ -1,14 +1,18 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
 //*- COMPONENTES :
-import { AlumnosComponent } from "src/components/alumnos/alumnos.component";
-import { CursosComponent } from "src/components/cursos/cursos.component";
+import { AlumnosComponent } from 'src/components/alumnos/alumnos.component';
+import { CursosComponent } from 'src/components/cursos/cursos.component';
+import { DetailAlumnoComponent } from 'src/components/detail-alumno/detail-alumno.component';
+import { DetailCursosComponent } from 'src/components/detail-cursos/detail-cursos.component';
 
 const routes: Routes = [
-  { path: "", component: AlumnosComponent },
-  { path: "Cursos", component: CursosComponent },
-  // { path: "**", redirectTo: "", pathMatch: "full" },
+  { path: '', component: AlumnosComponent },
+  { path: 'Cursos', component: CursosComponent },
+  { path: 'DetailAlumno/:id', component: DetailAlumnoComponent },
+  { path: 'DetailCursos/:id', component: DetailCursosComponent },
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
 @NgModule({

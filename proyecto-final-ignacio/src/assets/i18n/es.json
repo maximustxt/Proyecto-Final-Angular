@@ -55,5 +55,13 @@
   "BotonLogOut": "Cerrar sesión",
   "AreaProgramacion": "Programación y Desarrollo",
   "AreaSeguridad": "Seguridad",
-  "AreaDiseño": "Diseño"
+  "AreaDiseño": "Diseño",
+  "Curso de Angular": "Curso de Angular",
+  "Curso de Java": "Curso de Java",
+  "Curso de Python": "Curso de Python",
+  "Curso de Html y Css": "Curso de Html y Css",
+  "Curso de UX/UI": "Curso de UX/UI",
+  "Curso de Seguridad": "Curso de Seguridad",
+  "Curso de C++": "Curso de C++",
+  "Curso de Sprint Boot": "Curso de Sprint Boot"
 }

@@ -14,6 +14,12 @@ export class CursosService {
     );
   }
 
+  getDetailCurso(id: string) {
+    return this.http.get(
+      `https://servidor-proyecto-final-angular.onrender.com/Cursos/${id}`
+    );
+  }
+
   deleteCursos(ID: string) {
     return this.http.delete(
       `https://servidor-proyecto-final-angular.onrender.com/Cursos/${ID}`

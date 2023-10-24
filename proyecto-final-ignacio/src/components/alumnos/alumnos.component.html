@@ -52,7 +52,7 @@
       <ng-container matColumnDef="Cursando">
         <th mat-header-cell *matHeaderCellDef translate="ColumnaCursando"></th>
         <td mat-cell *matCellDef="let element">
-          <h6>{{ element?.cursando }}</h6>
+          <h6 [translate]="element?.cursando">{{ element?.cursando }}</h6>
         </td>
       </ng-container>
 
@@ -63,14 +63,20 @@
           <div class="ContainerBotonsCrearDelete">
             <a
               class="IconEdit"
-              matTooltip="Editar Usuario"
+              matTooltip="Editar Alumno"
               (click)="EditAlumno(element)"
               ><mat-icon>edit</mat-icon></a
             >
             <a
+              class="IconVisibility"
+              matTooltip="Ver Alumno"
+              (click)="VerAlumno(element._id)"
+              ><mat-icon>visibility</mat-icon></a
+            >
+            <a
               (click)="eliminarAlumno(element?._id)"
               class="IconDelete"
-              matTooltip="Eliminar Usuario"
+              matTooltip="Eliminar Alumno"
               ><mat-icon>delete</mat-icon></a
             >
           </div>
