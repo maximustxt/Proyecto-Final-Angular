@@ -10,3 +10,6 @@
 <h3>Aca dejo el deploy del proyecto :</h3>
 
 📌 https://proyecto-final-angular-six.vercel.app/
+
+
+LA BASE DE DATOS TARDA EN RESPONDER. PERO DENTRO DE UNOS POCOS MINUTOS SE OBTENDRAN LOS DATOS.
