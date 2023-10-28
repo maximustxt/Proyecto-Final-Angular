@@ -16,6 +16,20 @@ import { ICursos } from 'src/common/Interfaces';
 export class DialogoCursosComponent {
   CrearCurso!: FormGroup;
 
+  // HACER FECHAS DE INICIO Y FIN , SE MUESTRA EN EL DETAIL. DESCRIBIR LA PAGINA WEB EN GITHUB.
+
+  FechaDeInicio = (d: Date | null): boolean => {
+    const day = (d || new Date()).getDay();
+    // Prevent Saturday and Sunday from being selected.
+    return day !== 0 && day !== 6;
+  };
+
+  FechaDeFinalizacion = (d: Date | null): boolean => {
+    const day = (d || new Date()).getDay();
+    // Prevent Saturday and Sunday from being selected.
+    return day !== 0 && day !== 6;
+  };
+
   constructor(
     private FB: FormBuilder,
     private toastr: ToastrService,
@@ -26,7 +40,10 @@ export class DialogoCursosComponent {
       nombre: ['', [Validators.required]],
       profesor: [, [Validators.required]],
       area: ['', [Validators.required]],
+      fechaInicio: ['', [Validators.required]],
+      fechaFinal: ['', [Validators.required]],
       vacantes: ['', [Validators.required]],
+      descripcion: ['', [Validators.required]],
     });
 
     if (this.Curso?.nombre) {
@@ -78,7 +95,9 @@ export class DialogoCursosComponent {
       !this.CrearCurso.value.nombre ||
       !this.CrearCurso.value.vacantes ||
       !this.CrearCurso.value.profesor ||
-      !this.CrearCurso.value.area
+      !this.CrearCurso.value.area ||
+      !this.CrearCurso.value.fechaInicio ||
+      !this.CrearCurso.value.fechaFinal
     ) {
       this.AlertaCamposIncompletos();
     } else if (this.CrearCurso.invalid) {

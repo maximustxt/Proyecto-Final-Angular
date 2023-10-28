@@ -6,13 +6,17 @@ import { AlumnosComponent } from 'src/components/alumnos/alumnos.component';
 import { CursosComponent } from 'src/components/cursos/cursos.component';
 import { DetailAlumnoComponent } from 'src/components/detail-alumno/detail-alumno.component';
 import { DetailCursosComponent } from 'src/components/detail-cursos/detail-cursos.component';
+import { LoginComponent } from 'src/components/login/login.component';
+import { RegistroComponent } from 'src/components/registro/registro.component';
 
 const routes: Routes = [
-  { path: '', component: AlumnosComponent },
+  { path: '', component: LoginComponent },
+  { path: 'Registro', component: RegistroComponent },
+  { path: 'Alumnos', component: AlumnosComponent },
   { path: 'Cursos', component: CursosComponent },
   { path: 'DetailAlumno/:id', component: DetailAlumnoComponent },
   { path: 'DetailCursos/:id', component: DetailCursosComponent },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
+  { path: '**', redirectTo: '/Cursos', pathMatch: 'full' },
 ];
 
 @NgModule({

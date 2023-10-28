@@ -1,0 +1,22 @@
+<mxfile host="65bd71144e">
+    <diagram id="wgqYJWZCZziyorg7JaH5" name="Page-1">
+        <mxGraphModel dx="656" dy="475" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="USUARIO ADMIN : se va a tener que logear. le va aparecer informacion personal y va a poder editar los alumnos.&amp;nbsp;" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="120" y="70" width="140" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="CURSOS : Va a poder observar los diferentes Cursos." style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="425" y="70" width="125" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="ALUMNOS : Lo vamos a poder editar , etc." style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="120" y="240" width="140" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="INSCRIPCIONES DE LOS ALUMNOS : Pido desde el back todos los alumnos de determinados cursos.&lt;br&gt;Hacer un Crud." style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="425" y="240" width="125" height="120" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

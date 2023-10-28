@@ -30,6 +30,46 @@
           </mat-form-field>
           <br />
 
+          <!-----------------FECHAS INICIO---------------->
+          <br />
+          <mat-form-field class="example-full-width">
+            <mat-label translate="LabelFechaInicial"></mat-label>
+            <input
+              matInput
+              formControlName="fechaInicio"
+              [matDatepickerFilter]="FechaDeInicio"
+              [matDatepicker]="pickerInicio"
+              placeholder="MM/DD/YYYY"
+            />
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="pickerInicio"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #pickerInicio></mat-datepicker>
+            <mat-error translate="ErrorFechaInicioForm"></mat-error>
+          </mat-form-field>
+          <br />
+
+          <!-----------------FECHAS FINAL---------------->
+          <br />
+          <mat-form-field class="example-full-width">
+            <mat-label translate="LabelFechaFinal"></mat-label>
+            <input
+              matInput
+              formControlName="fechaFinal"
+              [matDatepickerFilter]="FechaDeFinalizacion"
+              [matDatepicker]="pickerFinalizacion"
+              placeholder="MM/DD/YYYY"
+            />
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="pickerFinalizacion"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #pickerFinalizacion></mat-datepicker>
+            <mat-error translate="ErrorFechaFinalForm"></mat-error>
+          </mat-form-field>
+          <br />
+
           <!---------------AREA---------------->
           <br />
           <mat-form-field appearance="outline">
@@ -42,6 +82,15 @@
                 {{ options.viewValue }}
               </mat-option>
             </mat-select>
+          </mat-form-field>
+          <br />
+
+          <!--------------DESCRIPCION--------------->
+
+          <mat-form-field appearance="outline">
+            <mat-label translate="LabelDescripcionForm"></mat-label>
+            <textarea formControlName="descripcion" matInput></textarea>
+            <mat-error translate="ErrorDescripcionForm"></mat-error>
           </mat-form-field>
           <br />
 
@@ -98,6 +147,46 @@
           </mat-form-field>
           <br />
 
+          <!-----------------FECHAS INICIO---------------->
+          <br />
+          <mat-form-field class="example-full-width">
+            <mat-label translate="LabelFechaInicial"></mat-label>
+            <input
+              matInput
+              formControlName="fechaInicio"
+              [matDatepickerFilter]="FechaDeInicio"
+              [matDatepicker]="pickerInicio"
+              placeholder="MM/DD/YYYY"
+            />
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="pickerInicio"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #pickerInicio></mat-datepicker>
+            <mat-error translate="ErrorFechaInicioForm"></mat-error>
+          </mat-form-field>
+          <br />
+
+          <!-----------------FECHAS FINAL---------------->
+          <br />
+          <mat-form-field class="example-full-width">
+            <mat-label translate="LabelFechaFinal"></mat-label>
+            <input
+              matInput
+              formControlName="fechaFinal"
+              [matDatepickerFilter]="FechaDeFinalizacion"
+              [matDatepicker]="pickerFinalizacion"
+              placeholder="MM/DD/YYYY"
+            />
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="pickerFinalizacion"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #pickerFinalizacion></mat-datepicker>
+            <mat-error translate="ErrorFechaFinalForm"></mat-error>
+          </mat-form-field>
+          <br />
+
           <!---------------AREA---------------->
           <br />
           <mat-form-field appearance="outline">
@@ -110,6 +199,15 @@
                 {{ options.viewValue }}
               </mat-option>
             </mat-select>
+          </mat-form-field>
+          <br />
+
+          <!--------------DESCRIPCION--------------->
+
+          <mat-form-field appearance="outline">
+            <mat-label translate="LabelDescripcionForm"></mat-label>
+            <textarea formControlName="descripcion" matInput></textarea>
+            <mat-error translate="ErrorDescripcionForm"></mat-error>
           </mat-form-field>
           <br />
 

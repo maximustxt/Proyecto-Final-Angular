@@ -1,7 +1,17 @@
-<div *ngIf="Alumno">
+<div class="ContainerDetailAlumno" *ngIf="Alumno; else Loading">
+  <h1 class="TituloAlumno">ALUMNO</h1>
   <img [src]="Alumno.imagen" />
-  <p>{{ Alumno.nombre }}</p>
-  <p>{{ Alumno.apellido }}</p>
-  <p>{{ Alumno.edad }}</p>
-  <p>{{ Alumno.cursando }}</p>
+  <br />
+  <p>NOMBRE : {{ Alumno.nombre }}</p>
+  <p>APELLIDO : {{ Alumno.apellido }}</p>
+  <p>EDAD : {{ Alumno.edad }}</p>
+  <p>CURSANDO : {{ Alumno.cursando }}</p>
 </div>
+
+<ng-template #Loading>
+  <main class="ContainerLoading">
+    <h1>Loading...</h1>
+  </main>
+</ng-template>
+
+<app-footer></app-footer>

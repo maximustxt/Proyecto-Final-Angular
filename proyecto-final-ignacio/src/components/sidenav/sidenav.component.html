@@ -26,16 +26,7 @@
       />
     </a>
   </ng-container>
-  <div>
-    <!-- Boton de opciones -->
-
-    <!-- <button
-      mat-icon-button
-      aria-label="Example icon button with a vertical three dot icon"
-    >
-      <mat-icon>more_vert</mat-icon>
-    </button> -->
-  </div>
+  <div></div>
 </mat-toolbar>
 
 <!-------- SIDENAV --------->
@@ -56,7 +47,11 @@
 
       <div mat-icon-button class="ContainerHome">
         <mat-icon class="Icono">home</mat-icon>
-        <a routerLink="/" (click)="snav.toggle()" translate="BotonHome"></a>
+        <a
+          routerLink="/Alumnos"
+          (click)="snav.toggle()"
+          translate="BotonHome"
+        ></a>
       </div>
       <br />
 
@@ -74,19 +69,19 @@
 
       <!----------------BOTON INICIO DE SESION---------------->
 
-      <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+      <ng-container *ngIf="auth.isAuthenticated$ | async">
         <div mat-icon-button class="ContainerContact" routerLink="/Login">
           <mat-icon class="Icono">logout</mat-icon>
           <a (click)="auth.logout()" translate="BotonLogOut"></a>
         </div>
       </ng-container>
 
-      <ng-template #loggedOut>
+      <!-- <ng-template #loggedOut>
         <div mat-icon-button class="ContainerContact" routerLink="/Login">
           <mat-icon class="Icono">account_circle</mat-icon>
           <a (click)="auth.loginWithRedirect()" translate="BotonLogin"></a>
         </div>
-      </ng-template>
+      </ng-template> -->
       <br />
     </mat-nav-list>
   </mat-sidenav>

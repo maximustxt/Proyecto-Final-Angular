@@ -1,7 +1,21 @@
-<div *ngIf="Curso">
-  <p>{{ Curso.nombre }}</p>
-  <p>{{ Curso.profesor }}</p>
-  <p>{{ Curso.descripcion }}</p>
-  <p>{{ Curso.area }}</p>
-  <h1>{{ Curso.vacantes }}</h1>
+<div class="ContainerDetailCurso" *ngIf="Curso; else Loading">
+  <h1 class="TituloCuros">CURSO</h1>
+  <p>NOMBRE DEL CURSO : {{ Curso.nombre }}</p>
+  <p>PROFESOR QUE DICTA EL CURSO : {{ Curso.profesor }}</p>
+  <p>DESCRIPCION DEL CURSO : {{ Curso.descripcion }}</p>
+  <p>AREA : {{ Curso.area }}</p>
+  <p>CANTIDAD DE VACANTES DISPONIBLES : {{ Curso.vacantes }}</p>
+  <p>FECHA DE INICIO DEL CURSO : {{ Curso.fechaInicio | date : "M/d/yy" }}</p>
+  <p>
+    FECHA DE FINALIZACION DEL CURSO :
+    {{ Curso.fechaFinal | date : "M/d/yy" }}
+  </p>
 </div>
+
+<ng-template #Loading>
+  <main class="ContainerLoading">
+    <h1>Loading...</h1>
+  </main>
+</ng-template>
+
+<app-footer></app-footer>

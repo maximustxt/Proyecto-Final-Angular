@@ -63,5 +63,19 @@
   "Curso de UX/UI": "Curso de UX/UI",
   "Curso de Seguridad": "Curso de Seguridad",
   "Curso de C++": "Curso de C++",
-  "Curso de Sprint Boot": "Curso de Sprint Boot"
+  "Curso de Sprint Boot": "Curso de Sprint Boot",
+  "LabelEmailForm": "Correo",
+  "ErrorEmailForm": "Correo Requerido",
+  "LabelPasswordForm": "Contraseña",
+  "ErrorPasswordForm": "Contraseña Requerida",
+  "BotonLogeo": "Inicio De Sesion",
+  "BotonRegistrarse": "Registrarse",
+  "ErrorEmailInvalidForm": "Correo Invalido",
+  "LabelTelefonoForm": "Telefono",
+  "ErrorTelefonoForm": "Telefono Requerido",
+  "BotonSubmit": "Enviar",
+  "ErrorFechaInicioForm": "Fecha De Inicio Requerida",
+  "ErrorFechaFinalForm": "Fecha Final Requerida",
+  "LabelFechaInicial": "Fecha De Inicio",
+  "LabelFechaFinal": "Fecha De Finalización"
 }
