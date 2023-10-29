@@ -93,14 +93,26 @@ export class DialogoCursosComponent {
 
   OnEdit() {
     if (this.Curso) {
-      this.AlertaCursoEditado();
-      this.dialogRef.close({ ...this.CrearCurso.value, _id: this.Curso._id }); // Metodo close sirve para enviar los datos y cerrar el dialogo.
+      let FechaI = new Date(this.CrearCurso.value.fechaInicio);
+      let FechaF = new Date(this.CrearCurso.value.fechaFinal);
+
+      if (this.CrearCurso.invalid) {
+        this.AlertaErroresEnLosCampos();
+      } else if (FechaI > FechaF) {
+        this.AlertaFechaInicioMayorFechaFinal();
+      } else if (FechaI.toDateString() === FechaF.toDateString()) {
+        //- Metodo toDateString ==> Convierte las fechas sin horas y segundos.
+        this.AlertaFechaInicioIgualFechaFinal();
+      } else {
+        this.AlertaCursoEditado();
+        this.dialogRef.close({ ...this.CrearCurso.value, _id: this.Curso._id }); // Metodo close sirve para enviar los datos y cerrar el dialogo.
+      }
     }
   }
 
   OnSubmit() {
-    var FechaI = new Date(this.CrearCurso.value.fechaInicio);
-    var FechaF = new Date(this.CrearCurso.value.fechaFinal);
+    let FechaI = new Date(this.CrearCurso.value.fechaInicio);
+    let FechaF = new Date(this.CrearCurso.value.fechaFinal);
 
     if (
       !this.CrearCurso.value.nombre ||
