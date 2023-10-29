@@ -67,21 +67,14 @@
       </div>
       <br />
 
-      <!----------------BOTON INICIO DE SESION---------------->
+      <!----------------BOTON LOGOUT---------------->
 
-      <ng-container *ngIf="auth.isAuthenticated$ | async">
+      <ng-container *ngIf="Admin?.email">
         <div mat-icon-button class="ContainerContact" routerLink="/Login">
           <mat-icon class="Icono">logout</mat-icon>
-          <a (click)="auth.logout()" translate="BotonLogOut"></a>
+          <a (click)="MetodoLogout()" translate="BotonLogOut"></a>
         </div>
       </ng-container>
-
-      <!-- <ng-template #loggedOut>
-        <div mat-icon-button class="ContainerContact" routerLink="/Login">
-          <mat-icon class="Icono">account_circle</mat-icon>
-          <a (click)="auth.loginWithRedirect()" translate="BotonLogin"></a>
-        </div>
-      </ng-template> -->
       <br />
     </mat-nav-list>
   </mat-sidenav>

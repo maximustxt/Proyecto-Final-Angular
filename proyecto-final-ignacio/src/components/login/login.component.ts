@@ -11,9 +11,6 @@ import { AdminService } from 'src/Services/Administrador/admin.service';
 //*- ALERT :
 import { ToastrService } from 'ngx-toastr';
 
-//*- INTERFACES :
-import { IAdministrador } from 'src/common/Interfaces';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
