@@ -77,5 +77,9 @@
   "ErrorFechaInicioForm": "Fecha De Inicio Requerida",
   "ErrorFechaFinalForm": "Fecha Final Requerida",
   "LabelFechaInicial": "Fecha De Inicio",
-  "LabelFechaFinal": "Fecha De Finalización"
+  "LabelFechaFinal": "Fecha De Finalización",
+  "BotonAlumno": "Alumnos",
+  "BotonInscripciones": "Inscripciones",
+  "ColumnaNameAlumnoInscripcion": "Alumnos",
+  "ColumnaCursoInscripto": "Curso Inscripto"
 }

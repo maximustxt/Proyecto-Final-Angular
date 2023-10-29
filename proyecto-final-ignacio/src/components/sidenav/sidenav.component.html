@@ -46,11 +46,11 @@
       <!----------------BOTON DE INICIO---------------->
 
       <div mat-icon-button class="ContainerHome">
-        <mat-icon class="Icono">home</mat-icon>
+        <mat-icon class="Icono">person</mat-icon>
         <a
           routerLink="/Alumnos"
           (click)="snav.toggle()"
-          translate="BotonHome"
+          translate="BotonAlumno"
         ></a>
       </div>
       <br />
@@ -63,6 +63,18 @@
           routerLink="/Cursos"
           (click)="snav.toggle()"
           translate="BotonCursos"
+        ></a>
+      </div>
+      <br />
+
+      <!----------------BOTON DE INSCRIPCIONES---------------->
+
+      <div mat-icon-button class="ContainerContact">
+        <mat-icon class="Icono">assignment_turned_in</mat-icon>
+        <a
+          routerLink="/Inscripciones"
+          (click)="snav.toggle()"
+          translate="BotonInscripciones"
         ></a>
       </div>
       <br />

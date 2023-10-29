@@ -39,6 +39,7 @@ import { DetailAlumnoComponent } from 'src/components/detail-alumno/detail-alumn
 import { DetailCursosComponent } from 'src/components/detail-cursos/detail-cursos.component';
 import { LoginComponent } from '../../components/login/login.component';
 import { RegistroComponent } from '../../components/registro/registro.component';
+import { InscripcionesComponent } from 'src/components/inscripciones/inscripciones.component';
 
 //*- import ngx-translate and the http loader
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -91,6 +92,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     DetailCursosComponent,
     LoginComponent,
     RegistroComponent,
+    InscripcionesComponent,
   ],
   imports: [
     CommonModule,
@@ -148,6 +150,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     CursosComponent,
     DetailAlumnoComponent,
     DetailCursosComponent,
+    InscripcionesComponent,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MatSidenavModule,
