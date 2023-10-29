@@ -68,6 +68,14 @@ export class DialogoCursosComponent {
     );
   }
 
+  AlertaFechaInicioMayorFechaFinal() {
+    this.toastr.warning('La fecha De Inicio no debe ser Mayor a la Final');
+  }
+
+  AlertaFechaInicioIgualFechaFinal() {
+    this.toastr.warning('La fecha De Inicio no debe ser Igual a la Final');
+  }
+
   AlertaErroresEnLosCampos() {
     this.toastr.error(
       'Hay Errores en los campos',
@@ -91,6 +99,9 @@ export class DialogoCursosComponent {
   }
 
   OnSubmit() {
+    var FechaI = new Date(this.CrearCurso.value.fechaInicio);
+    var FechaF = new Date(this.CrearCurso.value.fechaFinal);
+
     if (
       !this.CrearCurso.value.nombre ||
       !this.CrearCurso.value.vacantes ||
@@ -102,6 +113,11 @@ export class DialogoCursosComponent {
       this.AlertaCamposIncompletos();
     } else if (this.CrearCurso.invalid) {
       this.AlertaErroresEnLosCampos();
+    } else if (FechaI > FechaF) {
+      this.AlertaFechaInicioMayorFechaFinal();
+    } else if (FechaI.toDateString() === FechaF.toDateString()) {
+      //- Metodo toDateString ==> Convierte las fechas sin horas y segundos.
+      this.AlertaFechaInicioIgualFechaFinal();
     } else {
       this.AlertaCursoCreado();
       this.dialogRef.close({
