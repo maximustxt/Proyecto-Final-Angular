@@ -9,8 +9,9 @@ import { AdminService } from 'src/Services/Administrador/admin.service';
 import { AuthService } from '@auth0/auth0-angular';
 
 //* LOCALSTORAGE ADMINISTRADOR :
-import ObtenerLocalStorageAdmin from '../LocalStorage/Administrador/ObtenerLocalStorageAdmin';
-import EliminarLocalStorageAdmin from '../LocalStorage/Administrador/EliminarLocalStorageAdmin';
+import ObtenerLocalStorageAdmin from '../LocalStorage/ObtenerLocalStorageAdmin';
+import EliminarLocalStorageAdmin from '../LocalStorage/EliminarLocalStorageAdmin';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidenav',
@@ -45,6 +46,7 @@ export class SidenavComponent implements OnDestroy, OnInit {
     media: MediaMatcher,
     private TraslateService: TranslateService,
     private ServiciosAdministrador: AdminService,
+    private router: Router,
     public auth: AuthService
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
@@ -69,11 +71,11 @@ export class SidenavComponent implements OnDestroy, OnInit {
 
   MetodoLogout() {
     this.Admin = undefined;
-    EliminarLocalStorageAdmin();
     this.Suscription = this.ServiciosAdministrador.LogoutAdmin(
       ObtenerLocalStorageAdmin().id
     ).subscribe((value) => value);
-    document.location.href = '';
+    EliminarLocalStorageAdmin();
+    this.router.navigate(['']);
   }
 
   //* CUANDO EL COMPONENTE SE DESMONTA :

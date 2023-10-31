@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 
 //*- MODULO DE RUTAS :
-import { AppRoutingModule } from '../app-routing.module';
+import { AppRoutingModule } from '../app/app-routing.module';
 
 //*- ALERTAS TOASTER :
 import { ToastrModule } from 'ngx-toastr';
@@ -23,22 +23,22 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 //*- PIPES :
-import { PipeNombreApellidoPipe } from '../../pipes/pipe-nombre-apellido.pipe';
+import { PipeNombreApellidoPipe } from '../pipes/pipe-nombre-apellido.pipe';
 
 //*- DIRECTIVAS :
-import { TitleFontSizeDirective } from '../../directives/title-font-size.directive';
+import { TitleFontSizeDirective } from '../directives/title-font-size.directive';
 
 //*- Components :
-import { FooterComponent } from '../../components/footer/footer.component';
-import { AlumnosComponent } from '../../components/alumnos/alumnos.component';
-import { SidenavComponent } from '../../components/sidenav/sidenav.component';
+import { FooterComponent } from '../components/footer/footer.component';
+import { AlumnosComponent } from '../components/alumnos/alumnos.component';
+import { SidenavComponent } from '../components/sidenav/sidenav.component';
 import { DialogoComponent } from 'src/components/dialogo/dialogo.component';
 import { DialogoCursosComponent } from 'src/components/dialogo-cursos/dialogo-cursos.component';
 import { CursosComponent } from 'src/components/cursos/cursos.component';
 import { DetailAlumnoComponent } from 'src/components/detail-alumno/detail-alumno.component';
 import { DetailCursosComponent } from 'src/components/detail-cursos/detail-cursos.component';
-import { LoginComponent } from '../../components/login/login.component';
-import { RegistroComponent } from '../../components/registro/registro.component';
+import { LoginComponent } from '../components/login/login.component';
+import { RegistroComponent } from '../components/registro/registro.component';
 import { InscripcionesComponent } from 'src/components/inscripciones/inscripciones.component';
 
 //*- import ngx-translate and the http loader

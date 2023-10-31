@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 //*- LOCALSTORAGE :
-import SubirAdminLogeado from '../LocalStorage/Administrador/SubirAdminLogeado';
+import SubirAdminLogeado from '../LocalStorage/SubirAdminLogeado';
 
 //*- SERVICIOS :
 import { AdminService } from 'src/Services/Administrador/admin.service';
@@ -78,6 +78,10 @@ export class LoginComponent {
             email: value.email,
             nombre: value.nombre,
           });
+
+          setTimeout(() => {
+            document.location.reload();
+          }, 500);
 
           this.router.navigate(['Alumnos']);
         },

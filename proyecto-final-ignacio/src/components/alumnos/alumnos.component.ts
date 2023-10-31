@@ -16,7 +16,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 
 //- Componente Dialogo :
-import { DialogoComponent } from '../../components/dialogo/dialogo.component';
+import { DialogoComponent } from '../dialogo/dialogo.component';
 import { Observable, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 

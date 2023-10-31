@@ -3,8 +3,6 @@ const ObtenerLocalStorageAdmin = () => {
 
   if (adminObtenido) {
     return JSON.parse(adminObtenido);
-  } else {
-    return 'No se encontro el admin';
   }
 };
 
