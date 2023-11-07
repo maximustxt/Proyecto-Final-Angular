@@ -1,16 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
 //*- COMPONENTES :
 import { LoginComponent } from 'src/components/login/login.component';
+//* GUARDIANES :
+import { rutasGuard } from 'src/guards/rutas.guard';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', component: LoginComponent, canActivate: [rutasGuard] },
   {
     path: 'Registro',
     loadChildren: () =>
       import('../components/registro/pages/registro.module').then(
         (m) => m.RegistroModule
+      ),
+  },
+  {
+    path: 'Administradores',
+    loadChildren: () =>
+      import('../components/administradores/pages/admin/admin.module').then(
+        (m) => m.AdminModule
       ),
   },
   {
@@ -47,6 +55,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('../components/detail-cursos/pages/cursos.module').then(
         (m) => m.CursosModule
+      ),
+  },
+  {
+    path: 'DetailAdmin/:id',
+    loadChildren: () =>
+      import('../components/detail-admin/pages/admin/admin.module').then(
+        (m) => m.AdminModule
       ),
   },
   { path: '**', redirectTo: '', pathMatch: 'full' },

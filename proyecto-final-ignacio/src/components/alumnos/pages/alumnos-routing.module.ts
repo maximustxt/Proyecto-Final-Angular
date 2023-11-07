@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 //* COMPONENTES :
 import { AlumnosComponent } from '../alumnos.component';
 //* GUARDIAN :
-import { rutasGuard } from 'src/core/guards/rutas.guard';
+import { rutasGuard } from 'src/guards/rutas.guard';
 
 const routes: Routes = [
   { path: '', component: AlumnosComponent, canActivate: [rutasGuard] },

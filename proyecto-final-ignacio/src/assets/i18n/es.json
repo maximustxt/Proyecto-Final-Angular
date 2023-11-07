@@ -81,5 +81,11 @@
   "BotonAlumno": "Alumnos",
   "BotonInscripciones": "Inscripciones",
   "ColumnaNameAlumnoInscripcion": "Alumnos",
-  "ColumnaCursoInscripto": "Curso Inscripto"
+  "ColumnaCursoInscripto": "Curso Inscripto",
+  "BotonAdministradores": "Administradores",
+  "TituloListaAdministradors": "LISTA DE ADMINISTRADORES",
+  "BotonCrearAdministrador": "Crear Administrador",
+  "CrearAdministrador": "CREAR ADMINISTRADOR",
+  "EditarAdministrador": "EDITAR ADMINISTRADOR",
+  "ColumnaEmail": "Correo"
 }

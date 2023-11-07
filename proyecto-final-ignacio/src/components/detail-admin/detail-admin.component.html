@@ -1,0 +1,17 @@
+<div class="ContainerDetailAdmin" *ngIf="Administrador; else Loading">
+  <h1 class="TituloAdmin">ADMINISTRADOR</h1>
+  <img [src]="Administrador.imagen" />
+  <br />
+  <p>NOMBRE : {{ Administrador.nombre }}</p>
+  <p>APELLIDO : {{ Administrador.apellido }}</p>
+  <p>EDAD : {{ Administrador.edad }}</p>
+  <p>EMAIL : {{ Administrador.email }}</p>
+</div>
+
+<ng-template #Loading>
+  <main class="ContainerLoading">
+    <h1>Loading...</h1>
+  </main>
+</ng-template>
+
+<app-footer></app-footer>

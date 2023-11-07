@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IAdministrador } from 'src/common/Interfaces';
+import { IAdmin, IAdministrador } from 'src/common/Interfaces';
+import { URL_PRODUCCION } from 'src/Enviroments/Enviroments.prod';
+import { URL_LOCAL } from 'src/Enviroments/Enviroments.local';
 
 @Injectable({
   providedIn: 'root',
@@ -8,28 +10,42 @@ import { IAdministrador } from 'src/common/Interfaces';
 export class AdminService {
   constructor(private http: HttpClient) {}
 
-  LoginAdmin(name: string) {
-    return this.http.get(
-      `https://servidor-proyecto-final-angular.onrender.com/Administrador/${name}`
-    );
-  }
-
-  PerfilAdmin(id: string) {
-    return this.http.get(
-      `https://servidor-proyecto-final-angular.onrender.com/Administrador/Detail/${id}`
-    );
-  }
-
-  RegistroAdmin(Admin: IAdministrador) {
+  LoginAdmin(Admin: IAdmin) {
     return this.http.post(
-      `https://servidor-proyecto-final-angular.onrender.com/Administrador`,
+      `${URL_PRODUCCION.baseUrl}/TablaAdministradores/Verificacion`,
       Admin
     );
   }
 
-  LogoutAdmin(id: string) {
+  getAdministradores() {
+    return this.http.get<IAdmin>(
+      `${URL_PRODUCCION.baseUrl}/TablaAdministradores`
+    );
+  }
+
+  getDetailAdministradores(id: string) {
+    return this.http.get(
+      `${URL_PRODUCCION.baseUrl}/TablaAdministradores/Detail/${id}`
+    );
+  }
+
+  DeleteAdministradores(id: string) {
     return this.http.delete(
-      `https://servidor-proyecto-final-angular.onrender.com/Administrador/${id}`
+      `${URL_PRODUCCION.baseUrl}/TablaAdministradores/${id}`
+    );
+  }
+
+  PostAdministrador(Administrador: IAdmin) {
+    return this.http.post(
+      `${URL_PRODUCCION.baseUrl}/TablaAdministradores`,
+      Administrador
+    );
+  }
+
+  PutAdministrador(Administrador: IAdmin, id: string) {
+    return this.http.put(
+      `${URL_PRODUCCION.baseUrl}/TablaAdministradores/${id}`,
+      Administrador
     );
   }
 }

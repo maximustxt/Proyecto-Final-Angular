@@ -71,9 +71,6 @@ export class SidenavComponent implements OnDestroy, OnInit {
 
   MetodoLogout() {
     this.Admin = undefined;
-    this.Suscription = this.ServiciosAdministrador.LogoutAdmin(
-      ObtenerLocalStorageAdmin().id
-    ).subscribe((value) => value);
     EliminarLocalStorageAdmin();
     this.router.navigate(['']);
   }

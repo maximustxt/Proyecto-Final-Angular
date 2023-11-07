@@ -1,9 +1,5 @@
-const SubirAdminLogeado = (Admin: {
-  id: string;
-  nombre: string;
-  email: string;
-}) => {
-  localStorage.setItem('Admin', JSON.stringify(Admin));
+const SubirAdminLogeado = (Verificacion: string) => {
+  localStorage.setItem('Admin', JSON.stringify(Verificacion));
 };
 
 export default SubirAdminLogeado;

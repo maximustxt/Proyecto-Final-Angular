@@ -1,0 +1,30 @@
+.ContainerDetailAdmin {
+  margin-top: 100px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: 16px;
+  padding: 20px 20px;
+  height: fit-content;
+
+  .TituloAdmin {
+    background-color: rgb(153, 207, 214);
+    font-size: 30px;
+    padding: 10px 10px;
+    border-radius: 10px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  img {
+    border-radius: 10px;
+  }
+}
+
+.ContainerLoading {
+  height: 100%;
+}

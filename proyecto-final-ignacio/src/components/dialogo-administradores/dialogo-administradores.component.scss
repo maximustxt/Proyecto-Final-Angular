@@ -1,0 +1,32 @@
+mat-form-field {
+  width: 300px;
+}
+
+.ContainerBotones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  button {
+    margin-top: 20px;
+    width: 300px;
+  }
+}
+
+img {
+  width: 300px;
+}
+
+.ImageAlumno {
+  border-radius: 50%;
+  height: 250px;
+  border: 1px solid;
+}
+
+.InputImagen {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.ImagenAlumno {
+  height: 250px;
+}

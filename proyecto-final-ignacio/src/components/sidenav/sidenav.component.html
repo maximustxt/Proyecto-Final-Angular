@@ -79,9 +79,21 @@
       </div>
       <br />
 
+      <!----------------BOTON DE ADMINISTRADORES ---------------->
+
+      <div mat-icon-button class="ContainerContact">
+        <mat-icon class="Icono">supervised_user_circle</mat-icon>
+        <a
+          routerLink="/Administradores"
+          (click)="snav.toggle()"
+          translate="BotonAdministradores"
+        ></a>
+      </div>
+      <br />
+
       <!----------------BOTON LOGOUT---------------->
 
-      <ng-container *ngIf="Admin?.email">
+      <ng-container *ngIf="Admin">
         <div mat-icon-button class="ContainerContact" routerLink="/Login">
           <mat-icon class="Icono">logout</mat-icon>
           <a (click)="MetodoLogout()" translate="BotonLogOut"></a>

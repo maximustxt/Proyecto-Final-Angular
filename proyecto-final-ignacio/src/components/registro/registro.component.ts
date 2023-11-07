@@ -66,13 +66,13 @@ export class RegistroComponent {
     } else if (this.RegistroAdmin.invalid) {
       this.AlertaErroresEnLosCampos();
     } else {
-      this.servicioAdmin.RegistroAdmin(this.RegistroAdmin.value).subscribe({
-        next: (value) => {
-          this.AlertaAdminRegistrado();
-          this.router.navigate(['']);
-        },
-        error: (e) => this.AlertaErroresRegistro(e.error),
-      });
+      // this.servicioAdmin.RegistroAdmin(this.RegistroAdmin.value).subscribe({
+      //   next: (value) => {
+      //     this.AlertaAdminRegistrado();
+      //     this.router.navigate(['']);
+      //   },
+      //   error: (e) => this.AlertaErroresRegistro(e.error),
+      // });
     }
   }
 }

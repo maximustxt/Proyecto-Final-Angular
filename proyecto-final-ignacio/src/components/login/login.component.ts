@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -68,21 +68,14 @@ export class LoginComponent {
     } else if (this.LogeoAdmin.invalid) {
       this.AlertaErroresEnLosCampos();
     } else {
-      this.servicioAdmin.LoginAdmin(this.LogeoAdmin.value.nombre).subscribe({
+      this.servicioAdmin.LoginAdmin(this.LogeoAdmin.value).subscribe({
         next: (value: any) => {
           this.AlertaAdminLogeado();
-
           // GUARDAR LOS DATOS DEL ADMIN EN EL LOCALSTORAGE :
-          SubirAdminLogeado({
-            id: value._id,
-            email: value.email,
-            nombre: value.nombre,
-          });
-
           setTimeout(() => {
             document.location.reload();
-          }, 500);
-
+          }, 200);
+          SubirAdminLogeado(value);
           this.router.navigate(['Alumnos']);
         },
         error: (e) => {

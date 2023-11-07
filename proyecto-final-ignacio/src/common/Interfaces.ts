@@ -26,3 +26,12 @@ export interface IAdministrador {
   password: string;
   telefono: string;
 }
+
+export interface IAdmin {
+  _id?: string;
+  nombre: string;
+  apellido: string;
+  edad: number;
+  imagen: string;
+  email: string;
+}

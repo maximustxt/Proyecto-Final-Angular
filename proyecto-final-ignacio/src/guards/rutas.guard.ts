@@ -7,7 +7,7 @@ import ObtenerLocalStorageAdmin from 'src/components/LocalStorage/ObtenerLocalSt
 export const rutasGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
 
-  if (ObtenerLocalStorageAdmin()) {
+  if (ObtenerLocalStorageAdmin() === 'Administrador Permitido!') {
     return true;
   } else {
     router.navigate(['/']);

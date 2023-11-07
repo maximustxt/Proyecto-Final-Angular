@@ -40,6 +40,9 @@ import { DetailCursosComponent } from 'src/components/detail-cursos/detail-curso
 import { LoginComponent } from '../components/login/login.component';
 import { RegistroComponent } from '../components/registro/registro.component';
 import { InscripcionesComponent } from 'src/components/inscripciones/inscripciones.component';
+import { AdministradoresComponent } from 'src/components/administradores/administradores.component';
+import { DetailAdminComponent } from 'src/components/detail-admin/detail-admin.component';
+import { DialogoAdministradoresComponent } from 'src/components/dialogo-administradores/dialogo-administradores.component';
 
 //*- import ngx-translate and the http loader
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -93,6 +96,9 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     LoginComponent,
     RegistroComponent,
     InscripcionesComponent,
+    AdministradoresComponent,
+    DetailAdminComponent,
+    DialogoAdministradoresComponent,
   ],
   imports: [
     CommonModule,
@@ -151,6 +157,9 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     DetailAlumnoComponent,
     DetailCursosComponent,
     InscripcionesComponent,
+    AdministradoresComponent,
+    DialogoAdministradoresComponent,
+    DetailAdminComponent,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MatSidenavModule,
