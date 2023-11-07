@@ -2,11 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 //*- COMPONENTES :
 import { LoginComponent } from 'src/components/login/login.component';
-//* GUARDIANES :
-import { rutasGuard } from 'src/guards/rutas.guard';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent, canActivate: [rutasGuard] },
+  { path: '', component: LoginComponent },
   {
     path: 'Registro',
     loadChildren: () =>

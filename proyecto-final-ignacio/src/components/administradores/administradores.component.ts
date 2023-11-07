@@ -95,7 +95,6 @@ export class AdministradoresComponent {
           this.Administrador$ = this.ServiceAdmin.PostAdministrador(Admin);
           this.Suscribe = this.Administrador$.subscribe(
             (Administrador: any) => {
-              console.log(Administrador);
               this.Administrador = Administrador;
               this.dataSource = new MatTableDataSource(this.Administrador);
             }
