@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IAdmin, IAdministrador } from 'src/common/Interfaces';
+import { IAdmin } from 'src/common/Interfaces';
 import { URL_PRODUCCION } from 'src/Enviroments/Enviroments.prod';
-import { URL_LOCAL } from 'src/Enviroments/Enviroments.local';
 
 @Injectable({
   providedIn: 'root',
