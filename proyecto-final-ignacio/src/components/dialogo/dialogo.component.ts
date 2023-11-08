@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import axios from 'axios';
@@ -7,7 +7,7 @@ import axios from 'axios';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 //*- ALERT :
-import { ToastrService } from 'ngx-toastr';
+import { HotToastService } from '@ngneat/hot-toast';
 
 //*- INTERFACE :
 import { IAlumnos } from '../../common/Interfaces';
@@ -27,7 +27,7 @@ export class DialogoComponent implements OnInit {
 
   constructor(
     private FB: FormBuilder,
-    private toastr: ToastrService,
+    private toast: HotToastService,
     private ServiceAlumno: AlumnosService,
     public dialogRef: MatDialogRef<DialogoComponent>,
     @Inject(MAT_DIALOG_DATA) public Alumno?: IAlumnos
@@ -58,25 +58,47 @@ export class DialogoComponent implements OnInit {
   //*- ALERTAS :
 
   AlertaAlumnoEditado() {
-    this.toastr.success('Felicitaciones', 'Alumno Editado con exito!');
+    this.toast.success('Alumno Editado con exito!', {
+      position: 'top-right',
+      style: {
+        border: '1px solid #713200',
+        padding: '16px',
+        color: '#713200',
+      },
+    });
   }
 
   AlertaAlumnoCreado() {
-    this.toastr.success('Felicitaciones', 'Alumno Creado con exito!');
+    this.toast.success('Alumno Creado con exito!', {
+      position: 'top-right',
+      style: {
+        border: '1px solid #713200',
+        padding: '16px',
+        color: '#713200',
+      },
+    });
   }
 
   AlertaCamposIncompletos() {
-    this.toastr.error(
-      'Campos Incompletos',
-      'Debes completar todos los campos!'
-    );
+    this.toast.error('Campos Incompletos', {
+      position: 'top-right',
+      style: {
+        border: '1px solid #713200',
+        padding: '16px',
+        color: '#713200',
+      },
+    });
   }
 
   AlertaErroresEnLosCampos() {
-    this.toastr.error(
-      'Hay Errores en los campos',
-      'Debes corregir los errores!'
-    );
+    this.toast.error('Hay Errores en los campos', {
+      position: 'top-right',
+      style: {
+        border: '1px solid #713200',
+        padding: '16px',
+        color: '#713200',
+      },
+    });
   }
 
   //*- Funcion Salir del Dialogo :

@@ -48,7 +48,7 @@
       <div mat-icon-button class="ContainerHome">
         <mat-icon class="Icono">person</mat-icon>
         <a
-          routerLink="/Alumnos"
+          (click)="RedirijirAlumnos()"
           (click)="snav.toggle()"
           translate="BotonAlumno"
         ></a>
@@ -60,7 +60,7 @@
       <div mat-icon-button class="ContainerContact">
         <mat-icon class="Icono">book</mat-icon>
         <a
-          routerLink="/Cursos"
+          (click)="RedirijirCursos()"
           (click)="snav.toggle()"
           translate="BotonCursos"
         ></a>
@@ -72,7 +72,7 @@
       <div mat-icon-button class="ContainerContact">
         <mat-icon class="Icono">assignment_turned_in</mat-icon>
         <a
-          routerLink="/Inscripciones"
+          (click)="RedirijirInscripciones()"
           (click)="snav.toggle()"
           translate="BotonInscripciones"
         ></a>
@@ -84,7 +84,7 @@
       <div mat-icon-button class="ContainerContact">
         <mat-icon class="Icono">supervised_user_circle</mat-icon>
         <a
-          routerLink="/Administradores"
+          (click)="RedirijirAdministradores()"
           (click)="snav.toggle()"
           translate="BotonAdministradores"
         ></a>

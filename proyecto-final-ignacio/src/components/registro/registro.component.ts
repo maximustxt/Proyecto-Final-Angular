@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-
-//*- SERVICIOS :
-import { AdminService } from 'src/Services/Administrador/admin.service';
 
 //*- ALERT :
-import { ToastrService } from 'ngx-toastr';
+import { HotToastService } from '@ngneat/hot-toast';
 
 @Component({
   selector: 'app-registro',
@@ -19,9 +15,7 @@ export class RegistroComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private servicioAdmin: AdminService,
-    private router: Router,
-    private toastr: ToastrService
+    private toast: HotToastService
   ) {
     this.RegistroAdmin = this.formBuilder.group({
       nombre: ['', [Validators.required]],
@@ -34,25 +28,19 @@ export class RegistroComponent {
   //*- ALERTAS :
 
   AlertaAdminRegistrado() {
-    this.toastr.success('Felicitaciones', 'Te haz registrado con exito! :)');
+    this.toast.success('Te haz registrado con exito! :)');
   }
 
   AlertaCamposIncompletos() {
-    this.toastr.warning(
-      'Campos Incompletos',
-      'Debes completar todos los campos!'
-    );
+    this.toast.warning('Campos Incompletos');
   }
 
   AlertaErroresEnLosCampos() {
-    this.toastr.warning(
-      'Hay Errores en los campos',
-      'Debes corregir los errores!'
-    );
+    this.toast.warning('Hay Errores en los campos');
   }
 
   AlertaErroresRegistro(error: string) {
-    this.toastr.error(`${error}`);
+    this.toast.error(`${error}`);
   }
 
   SubmitRegistro() {

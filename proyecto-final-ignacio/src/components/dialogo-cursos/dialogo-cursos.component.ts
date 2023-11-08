@@ -4,7 +4,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 //*- COMPONENTDIALOG :
 import { DialogoComponent } from '../dialogo/dialogo.component';
 //*- ALERTS :
-import { ToastrService } from 'ngx-toastr';
+import { HotToastService } from '@ngneat/hot-toast';
+
 //*- INTERFACE :
 import { ICursos } from 'src/common/Interfaces';
 
@@ -32,7 +33,7 @@ export class DialogoCursosComponent {
 
   constructor(
     private FB: FormBuilder,
-    private toastr: ToastrService,
+    private toast: HotToastService,
     public dialogRef: MatDialogRef<DialogoComponent>,
     @Inject(MAT_DIALOG_DATA) public Curso?: ICursos
   ) {
@@ -54,33 +55,69 @@ export class DialogoCursosComponent {
   //*- ALERTAS :
 
   AlertaCursoEditado() {
-    this.toastr.success('Felicitaciones', 'Curso Editado con exito!');
+    this.toast.success('Curso Editado con exito!', {
+      position: 'top-right',
+      style: {
+        border: '1px solid #713200',
+        padding: '16px',
+        color: '#713200',
+      },
+    });
   }
 
   AlertaCursoCreado() {
-    this.toastr.success('Felicitaciones', 'Curso Creado con exito!');
+    this.toast.success('Felicitaciones', {
+      position: 'top-right',
+      style: {
+        border: '1px solid #713200',
+        padding: '16px',
+        color: '#713200',
+      },
+    });
   }
 
   AlertaCamposIncompletos() {
-    this.toastr.error(
-      'Campos Incompletos',
-      'Debes completar todos los campos!'
-    );
+    this.toast.error('Campos Incompletos', {
+      position: 'top-right',
+      style: {
+        border: '1px solid #713200',
+        padding: '16px',
+        color: '#713200',
+      },
+    });
   }
 
   AlertaFechaInicioMayorFechaFinal() {
-    this.toastr.warning('La fecha De Inicio no debe ser Mayor a la Final');
+    this.toast.warning('La fecha De Inicio no debe ser Mayor a la Final', {
+      position: 'top-right',
+      style: {
+        border: '1px solid #713200',
+        padding: '16px',
+        color: '#713200',
+      },
+    });
   }
 
   AlertaFechaInicioIgualFechaFinal() {
-    this.toastr.warning('La fecha De Inicio no debe ser Igual a la Final');
+    this.toast.warning('La fecha De Inicio no debe ser Igual a la Final', {
+      position: 'top-right',
+      style: {
+        border: '1px solid #713200',
+        padding: '16px',
+        color: '#713200',
+      },
+    });
   }
 
   AlertaErroresEnLosCampos() {
-    this.toastr.error(
-      'Hay Errores en los campos',
-      'Debes corregir los errores!'
-    );
+    this.toast.error('Hay Errores en los campos', {
+      position: 'top-right',
+      style: {
+        border: '1px solid #713200',
+        padding: '16px',
+        color: '#713200',
+      },
+    });
   }
 
   //*- Funcion Salir del Dialogo :

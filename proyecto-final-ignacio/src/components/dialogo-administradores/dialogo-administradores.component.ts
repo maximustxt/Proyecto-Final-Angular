@@ -1,13 +1,14 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import axios from 'axios';
-import { DialogoComponent } from '../dialogo/dialogo.component';
-import { ToastrService } from 'ngx-toastr';
-import { IAdmin } from 'src/common/Interfaces';
 import { Observable } from 'rxjs';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-//* SERVICIO DE ADMINISTRADOR :
-import { AdminService } from 'src/Services/Administrador/admin.service';
+import axios from 'axios';
+//* COMPONENTE DIALOGO :
+import { DialogoComponent } from '../dialogo/dialogo.component';
+//* INTERFACE :
+import { IAdmin } from 'src/common/Interfaces';
+//* ALERTAS :
+import { HotToastService } from '@ngneat/hot-toast';
 
 @Component({
   selector: 'app-dialogo-administradores',
@@ -21,8 +22,7 @@ export class DialogoAdministradoresComponent {
 
   constructor(
     private FB: FormBuilder,
-    private toastr: ToastrService,
-    private ServiceAdministrador: AdminService,
+    private toast: HotToastService,
     public dialogRef: MatDialogRef<DialogoComponent>,
     @Inject(MAT_DIALOG_DATA) public Administrador?: IAdmin
   ) {
@@ -48,25 +48,47 @@ export class DialogoAdministradoresComponent {
   //*- ALERTAS :
 
   AlertaAdministradorEditado() {
-    this.toastr.success('Felicitaciones', 'Administrador Editado con exito!');
+    this.toast.success('Administrador Editado con exito!', {
+      position: 'top-right',
+      style: {
+        border: '1px solid #713200',
+        padding: '16px',
+        color: '#713200',
+      },
+    });
   }
 
   AlertaAdministradorCreado() {
-    this.toastr.success('Felicitaciones', 'Administrador Creado con exito!');
+    this.toast.success('Administrador Creado con exito!', {
+      position: 'top-right',
+      style: {
+        border: '1px solid #713200',
+        padding: '16px',
+        color: '#713200',
+      },
+    });
   }
 
   AlertaCamposIncompletos() {
-    this.toastr.error(
-      'Campos Incompletos',
-      'Debes completar todos los campos!'
-    );
+    this.toast.error('Campos Incompletos', {
+      position: 'top-right',
+      style: {
+        border: '1px solid #713200',
+        padding: '16px',
+        color: '#713200',
+      },
+    });
   }
 
   AlertaErroresEnLosCampos() {
-    this.toastr.error(
-      'Hay Errores en los campos',
-      'Debes corregir los errores!'
-    );
+    this.toast.error('Hay Errores en los campos', {
+      position: 'top-right',
+      style: {
+        border: '1px solid #713200',
+        padding: '16px',
+        color: '#713200',
+      },
+    });
   }
 
   //*- Funcion Salir del Dialogo :

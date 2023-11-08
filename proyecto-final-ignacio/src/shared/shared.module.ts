@@ -7,7 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from '../app/app-routing.module';
 
 //*- ALERTAS TOASTER :
-import { ToastrModule } from 'ngx-toastr';
+import { HotToastModule } from '@ngneat/hot-toast';
 
 //*- Import the module from the SDK
 import { AuthModule } from '@auth0/auth0-angular';
@@ -103,7 +103,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   imports: [
     CommonModule,
     AppRoutingModule,
-    ToastrModule.forRoot(),
+    HotToastModule.forRoot(),
     MatNativeDateModule,
     BrowserModule,
     BrowserAnimationsModule,

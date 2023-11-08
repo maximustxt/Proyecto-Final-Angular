@@ -9,7 +9,7 @@ import SubirAdminLogeado from '../LocalStorage/SubirAdminLogeado';
 import { AdminService } from 'src/Services/Administrador/admin.service';
 
 //*- ALERT :
-import { ToastrService } from 'ngx-toastr';
+import { HotToastService } from '@ngneat/hot-toast';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +24,7 @@ export class LoginComponent {
     private formBuilder: FormBuilder,
     private servicioAdmin: AdminService,
     private router: Router,
-    private toastr: ToastrService
+    private toast: HotToastService
   ) {
     this.LogeoAdmin = this.formBuilder.group({
       nombre: ['', [Validators.required]],
@@ -36,25 +36,47 @@ export class LoginComponent {
   //*- ALERTAS :
 
   AlertaAdminLogeado() {
-    this.toastr.success('Felicitaciones', 'Te haz logeado con exito! :)');
+    this.toast.success('Te haz logeado con exito! :)', {
+      position: 'top-right',
+      style: {
+        border: '1px solid #713200',
+        padding: '16px',
+        color: '#713200',
+      },
+    });
   }
 
   AlertaCamposIncompletos() {
-    this.toastr.warning(
-      'Campos Incompletos',
-      'Debes completar todos los campos!'
-    );
+    this.toast.warning('Campos Incompletos', {
+      position: 'top-right',
+      style: {
+        border: '1px solid #713200',
+        padding: '16px',
+        color: '#713200',
+      },
+    });
   }
 
   AlertaErroresEnLosCampos() {
-    this.toastr.warning(
-      'Hay Errores en los campos',
-      'Debes corregir los errores!'
-    );
+    this.toast.warning('Hay Errores en los campos', {
+      position: 'top-right',
+      style: {
+        border: '1px solid #713200',
+        padding: '16px',
+        color: '#713200',
+      },
+    });
   }
 
   AlertaErroresLogin(error: string) {
-    this.toastr.error(`${error}`);
+    this.toast.error(`${error}`, {
+      position: 'top-right',
+      style: {
+        border: '1px solid #713200',
+        padding: '16px',
+        color: '#713200',
+      },
+    });
   }
 
   SubmitLogin() {

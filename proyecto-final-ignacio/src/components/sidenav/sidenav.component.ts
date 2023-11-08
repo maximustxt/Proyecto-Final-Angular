@@ -3,7 +3,6 @@ import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { AdminService } from 'src/Services/Administrador/admin.service';
 
 //* Import the AuthService type from the SDK
 import { AuthService } from '@auth0/auth0-angular';
@@ -12,6 +11,8 @@ import { AuthService } from '@auth0/auth0-angular';
 import ObtenerLocalStorageAdmin from '../LocalStorage/ObtenerLocalStorageAdmin';
 import EliminarLocalStorageAdmin from '../LocalStorage/EliminarLocalStorageAdmin';
 import { Router } from '@angular/router';
+//* ALERTAS :
+import { HotToastService } from '@ngneat/hot-toast';
 
 @Component({
   selector: 'app-sidenav',
@@ -45,13 +46,26 @@ export class SidenavComponent implements OnDestroy, OnInit {
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
     private TraslateService: TranslateService,
-    private ServiciosAdministrador: AdminService,
     private router: Router,
-    public auth: AuthService
+    public auth: AuthService,
+    private toast: HotToastService
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
+  }
+
+  //*- ALERTAS :
+
+  AlertaAdminLogeado() {
+    this.toast.warning('Debes Iniciar Sesion!', {
+      position: 'top-right',
+      style: {
+        border: '1px solid #713200',
+        padding: '16px',
+        color: '#713200',
+      },
+    });
   }
 
   //* CUANDO EL COMPONENTE SE MONTA :
@@ -80,5 +94,45 @@ export class SidenavComponent implements OnDestroy, OnInit {
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
     this.Suscription.unsubscribe();
+  }
+
+  //* FUNCION QUE REDIRIJE A LOS ALUMNOS :
+
+  RedirijirAlumnos() {
+    if (!ObtenerLocalStorageAdmin()) {
+      this.AlertaAdminLogeado();
+    } else {
+      this.router.navigate(['Alumnos']);
+    }
+  }
+
+  //* FUNCION QUE REDIRIJE A LOS CURSOS :
+
+  RedirijirCursos() {
+    if (!ObtenerLocalStorageAdmin()) {
+      this.AlertaAdminLogeado();
+    } else {
+      this.router.navigate(['Cursos']);
+    }
+  }
+
+  //* FUNCION QUE REDIRIJE A LAS INSCRIPCIONES :
+
+  RedirijirInscripciones() {
+    if (!ObtenerLocalStorageAdmin()) {
+      this.AlertaAdminLogeado();
+    } else {
+      this.router.navigate(['Inscripciones']);
+    }
+  }
+
+  //* FUNCION QUE REDIRIJE A LAS ADMINISTRADORES :
+
+  RedirijirAdministradores() {
+    if (!ObtenerLocalStorageAdmin()) {
+      this.AlertaAdminLogeado();
+    } else {
+      this.router.navigate(['Administradores']);
+    }
   }
 }
