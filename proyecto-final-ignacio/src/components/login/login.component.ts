@@ -1,15 +1,18 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
-//*- LOCALSTORAGE :
-import SubirAdminLogeado from '../LocalStorage/SubirAdminLogeado';
-
 //*- SERVICIOS :
 import { AdminService } from 'src/Services/Administrador/admin.service';
-
 //*- ALERT :
 import { HotToastService } from '@ngneat/hot-toast';
+//* STORE :
+import { Store } from '@ngrx/store';
+//* ACCIONES :
+import { conunterAxions } from 'src/Redux/Actions/Actions';
+//* SELECTOR DEL ESTADO :
+import { SelectAuthUser } from 'src/Redux/Selectors/Selectores';
+//* LOCAL STORAGE :
+import AgregarUser from '../LocalStorage/AgregarUser';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +27,8 @@ export class LoginComponent {
     private formBuilder: FormBuilder,
     private servicioAdmin: AdminService,
     private router: Router,
-    private toast: HotToastService
+    private toast: HotToastService,
+    private store: Store
   ) {
     this.LogeoAdmin = this.formBuilder.group({
       nombre: ['', [Validators.required]],
@@ -92,13 +96,17 @@ export class LoginComponent {
     } else {
       this.servicioAdmin.LoginAdmin(this.LogeoAdmin.value).subscribe({
         next: (value: any) => {
-          this.AlertaAdminLogeado();
-          // GUARDAR LOS DATOS DEL ADMIN EN EL LOCALSTORAGE :
-          setTimeout(() => {
-            document.location.reload();
-          }, 200);
-          SubirAdminLogeado(value);
+          // INTERACCION CON EL ESTADO DE REDUX :
+          this.store.dispatch(
+            conunterAxions.login({ EstadoDelUsuario: value })
+          );
+
+          //* OBTENEMOS EL ESTADO DE REDUX Y GUARDAMOS EN LOCAL STORAGE :
+          this.store.select(SelectAuthUser).subscribe((value) => {
+            AgregarUser(value);
+          });
           this.router.navigate(['Alumnos']);
+          this.AlertaAdminLogeado();
         },
         error: (e) => {
           this.AlertaErroresLogin(e.error);

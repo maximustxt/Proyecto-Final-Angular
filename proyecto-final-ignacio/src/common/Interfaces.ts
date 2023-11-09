@@ -35,3 +35,7 @@ export interface IAdmin {
   imagen: string;
   email: string;
 }
+
+export interface inicialStateInterface {
+  authUser: string;
+}

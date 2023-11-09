@@ -1,12 +1,12 @@
-import { Component, ViewChild } from "@angular/core";
-import { MediaMatcher } from "@angular/cdk/layout";
-import { ChangeDetectorRef } from "@angular/core";
-import { TranslateService } from "@ngx-translate/core";
+import { Component, ViewChild } from '@angular/core';
+import { MediaMatcher } from '@angular/cdk/layout';
+import { ChangeDetectorRef } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"],
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   mobileQuery: MediaQueryList;
@@ -22,12 +22,12 @@ export class AppComponent {
   ) {
     //------ Traducciones ------//
 
-    this.traduccionService.setDefaultLang("es");
-    this.traduccionService.use("es");
+    this.traduccionService.setDefaultLang('es');
+    this.traduccionService.use('es');
 
     //---------------------------------------//
 
-    this.mobileQuery = media.matchMedia("(max-width: 600px)");
+    this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }

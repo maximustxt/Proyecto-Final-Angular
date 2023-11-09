@@ -52,6 +52,9 @@ export class AlumnosComponent implements OnInit, OnDestroy {
   dataSource = new MatTableDataSource(this.Alumnos);
 
   ngOnInit(): void {
+    // setTimeout(() => {
+    //   document.location.reload();
+    // }, 100);
     this.Alumnos$ = this.ServiceAlumno.getAlumnos();
 
     this.Suscribe = this.Alumnos$.subscribe((Alumnos: any) => {

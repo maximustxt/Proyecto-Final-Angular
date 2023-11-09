@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { BrowserModule } from '@angular/platform-browser';
 
 //*- MODULO DE RUTAS :
@@ -8,9 +7,6 @@ import { AppRoutingModule } from '../app/app-routing.module';
 
 //*- ALERTAS TOASTER :
 import { HotToastModule } from '@ngneat/hot-toast';
-
-//*- Import the module from the SDK
-import { AuthModule } from '@auth0/auth0-angular';
 
 //*- ANIMACION DE ANGULAR MATERIAL :
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -38,7 +34,6 @@ import { CursosComponent } from 'src/components/cursos/cursos.component';
 import { DetailAlumnoComponent } from 'src/components/detail-alumno/detail-alumno.component';
 import { DetailCursosComponent } from 'src/components/detail-cursos/detail-cursos.component';
 import { LoginComponent } from '../components/login/login.component';
-import { RegistroComponent } from '../components/registro/registro.component';
 import { InscripcionesComponent } from 'src/components/inscripciones/inscripciones.component';
 import { AdministradoresComponent } from 'src/components/administradores/administradores.component';
 import { DetailAdminComponent } from 'src/components/detail-admin/detail-admin.component';
@@ -94,7 +89,6 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     DetailAlumnoComponent,
     DetailCursosComponent,
     LoginComponent,
-    RegistroComponent,
     InscripcionesComponent,
     AdministradoresComponent,
     DetailAdminComponent,
@@ -122,14 +116,6 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     MatTooltipModule,
     MatPaginatorModule,
     MatDialogModule,
-    //*- Import the module into the application, with configuration
-    AuthModule.forRoot({
-      domain: 'dev-tipd5xxi4ahjugyl.us.auth0.com',
-      clientId: 'LS4ndOYAyY7wjuStqT0gESrzNlAV9odJ',
-      authorizationParams: {
-        redirect_uri: window.location.origin,
-      },
-    }),
     //*- ngx-translate and the loader module
     HttpClientModule,
     TranslateModule.forRoot({
@@ -147,7 +133,6 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     TitleFontSizeDirective,
     LoginComponent,
     MatNativeDateModule,
-    RegistroComponent,
     DialogoComponent,
     DialogoCursosComponent,
     FooterComponent,

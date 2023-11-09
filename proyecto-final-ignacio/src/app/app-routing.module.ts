@@ -2,16 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 //*- COMPONENTES :
 import { LoginComponent } from 'src/components/login/login.component';
+//* GUARDIAN :
+import { AuthGuard } from '../guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
-  {
-    path: 'Registro',
-    loadChildren: () =>
-      import('../components/registro/pages/registro.module').then(
-        (m) => m.RegistroModule
-      ),
-  },
+  { path: '', component: LoginComponent, canActivate: [AuthGuard] },
+  // { path: '', component: LoginComponent },
   {
     path: 'Administradores',
     loadChildren: () =>

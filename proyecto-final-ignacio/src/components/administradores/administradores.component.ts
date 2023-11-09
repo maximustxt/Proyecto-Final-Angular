@@ -14,6 +14,8 @@ import { DialogoAdministradoresComponent } from '../dialogo-administradores/dial
   styleUrls: ['./administradores.component.scss'],
 })
 export class AdministradoresComponent {
+  ContadorObsevableRedux$!: Observable<any>;
+
   constructor(
     public dialog: MatDialog,
     private ServiceAdmin: AdminService,

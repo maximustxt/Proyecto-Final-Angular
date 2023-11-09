@@ -9,7 +9,7 @@ import { URL_PRODUCCION } from 'src/Enviroments/Enviroments.prod';
 export class AdminService {
   constructor(private http: HttpClient) {}
 
-  LoginAdmin(Admin: IAdmin) {
+  LoginAdmin(Admin: { nombre: string; email: string; password: string }) {
     return this.http.post(
       `${URL_PRODUCCION.baseUrl}/TablaAdministradores/Verificacion`,
       Admin

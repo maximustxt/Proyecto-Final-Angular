@@ -1,18 +1,26 @@
 import { MediaMatcher } from '@angular/cdk/layout';
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
-
-//* Import the AuthService type from the SDK
-import { AuthService } from '@auth0/auth0-angular';
-
-//* LOCALSTORAGE ADMINISTRADOR :
-import ObtenerLocalStorageAdmin from '../LocalStorage/ObtenerLocalStorageAdmin';
-import EliminarLocalStorageAdmin from '../LocalStorage/EliminarLocalStorageAdmin';
+import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
+
 //* ALERTAS :
 import { HotToastService } from '@ngneat/hot-toast';
+//* STORE :
+import { Store } from '@ngrx/store';
+//* AXIONS :
+import { conunterAxions } from 'src/Redux/Actions/Actions';
+//* LOCAL STORAGE :
+import EliminarUser from '../LocalStorage/EliminarUser';
+import ObtenerUser from '../LocalStorage/ObtenerUser';
 
 @Component({
   selector: 'app-sidenav',
@@ -47,13 +55,15 @@ export class SidenavComponent implements OnDestroy, OnInit {
     media: MediaMatcher,
     private TraslateService: TranslateService,
     private router: Router,
-    public auth: AuthService,
-    private toast: HotToastService
+    private toast: HotToastService,
+    private store: Store
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
+
+  @ViewChild('snav') sidenav!: MatSidenav;
 
   //*- ALERTAS :
 
@@ -71,9 +81,11 @@ export class SidenavComponent implements OnDestroy, OnInit {
   //* CUANDO EL COMPONENTE SE MONTA :
 
   ngOnInit(): void {
-    if (ObtenerLocalStorageAdmin()) {
-      this.Admin = ObtenerLocalStorageAdmin();
-    }
+    this.Admin = ObtenerUser();
+  }
+
+  metodOpenMenu() {
+    this.sidenav.toggle();
   }
 
   MetodoCambioDeIdioma(valor: string) {
@@ -84,8 +96,11 @@ export class SidenavComponent implements OnDestroy, OnInit {
   //* METODO LOGOUT :
 
   MetodoLogout() {
-    this.Admin = undefined;
-    EliminarLocalStorageAdmin();
+    this.sidenav.toggle();
+    //* HACEMOS UN LOGOUT CON REDUX :
+    this.store.dispatch(conunterAxions.logout());
+    //* ELIMINO EL LOCAL STORAGE:
+    EliminarUser();
     this.router.navigate(['']);
   }
 
@@ -99,7 +114,7 @@ export class SidenavComponent implements OnDestroy, OnInit {
   //* FUNCION QUE REDIRIJE A LOS ALUMNOS :
 
   RedirijirAlumnos() {
-    if (!ObtenerLocalStorageAdmin()) {
+    if (!ObtenerUser()) {
       this.AlertaAdminLogeado();
     } else {
       this.router.navigate(['Alumnos']);
@@ -109,7 +124,7 @@ export class SidenavComponent implements OnDestroy, OnInit {
   //* FUNCION QUE REDIRIJE A LOS CURSOS :
 
   RedirijirCursos() {
-    if (!ObtenerLocalStorageAdmin()) {
+    if (!ObtenerUser()) {
       this.AlertaAdminLogeado();
     } else {
       this.router.navigate(['Cursos']);
@@ -119,7 +134,7 @@ export class SidenavComponent implements OnDestroy, OnInit {
   //* FUNCION QUE REDIRIJE A LAS INSCRIPCIONES :
 
   RedirijirInscripciones() {
-    if (!ObtenerLocalStorageAdmin()) {
+    if (!ObtenerUser()) {
       this.AlertaAdminLogeado();
     } else {
       this.router.navigate(['Inscripciones']);
@@ -129,7 +144,7 @@ export class SidenavComponent implements OnDestroy, OnInit {
   //* FUNCION QUE REDIRIJE A LAS ADMINISTRADORES :
 
   RedirijirAdministradores() {
-    if (!ObtenerLocalStorageAdmin()) {
+    if (!ObtenerUser()) {
       this.AlertaAdminLogeado();
     } else {
       this.router.navigate(['Administradores']);
