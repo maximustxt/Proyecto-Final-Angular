@@ -13,3 +13,14 @@
 
 
 <h4>📢 📢 ¡IMPORTANTE! : LA BASE DE DATOS TARDA EN RESPONDER. PERO DENTRO DE UNOS POCOS MINUTOS SE OBTENDRAN LOS DATOS</h4> 
+
+
+<h3>DATOS PARA PODER LOGEARSE COMO ADMINISTRADOR : </h3>
+
+<h4>+++++++++++++++++ DATOS ADMIN +++++++++++++</h4>
+<p>Nombre : Juan</p>
+<p>Email : JuanPereira123@gmail.com</p>
+<p>Password : 123456</p>
+
+
+
