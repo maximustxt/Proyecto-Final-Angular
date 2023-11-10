@@ -2,6 +2,9 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { SharedModule } from 'src/shared/shared.module';
 import { of } from 'rxjs';
+import { StoreModule } from '@ngrx/store';
+import { appReducer } from 'src/Redux/Store';
+
 //* COMPONENTE :
 import { LoginComponent } from './login.component';
 
@@ -11,7 +14,11 @@ describe('Test del Componente Login', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [LoginComponent],
-      imports: [HttpClientTestingModule, SharedModule],
+      imports: [
+        HttpClientTestingModule,
+        SharedModule,
+        StoreModule.forRoot(appReducer, {}),
+      ],
     });
 
     // Instancia de la clase del componente

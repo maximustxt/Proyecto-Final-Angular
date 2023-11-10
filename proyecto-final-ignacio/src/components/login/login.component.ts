@@ -20,6 +20,9 @@ import AgregarUser from '../LocalStorage/AgregarUser';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
+  iniciarSesion() {
+    throw new Error('Method not implemented.');
+  }
   LogeoAdmin!: FormGroup;
   hide = true;
 

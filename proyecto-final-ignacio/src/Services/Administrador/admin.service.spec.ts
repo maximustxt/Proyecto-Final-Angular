@@ -9,7 +9,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 //* URL DE PRODUCCION / LOCAL :
 import { URL_PRODUCCION } from 'src/Enviroments/Enviroments.prod';
 
-describe('AdminService', () => {
+describe('Test del Servicio de Administradores', () => {
   let service: AdminService;
   let httpController: HttpTestingController;
 
@@ -29,29 +29,27 @@ describe('AdminService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('Debe verificar que si un usuario es valido o no', () => {
-    const USER_MOCK = {
-      nombre: 'nombreEjemplo',
-      email: 'emailEjemplo',
-      password: 'passwordEjemplo',
+  it('Debe enviar una solicitud POST para iniciar sesión como administrador', () => {
+    const adminCredentials = {
+      nombre: 'example',
+      email: 'example@example.com',
+      password: 'password123',
     };
 
-    //* HACEMOS UNA PETICION DE PRUEBA :
-
-    httpController
-      .expectOne({
-        method: 'POST',
-        url: `${URL_PRODUCCION.baseUrl}/TablaAdministradores/Verificacion`,
-      })
-      .flush([USER_MOCK]);
-
-    service.LoginAdmin(USER_MOCK).subscribe({
-      next: (LogeoAdmin) => {
-        console.log(LogeoAdmin),
-          expect(LogeoAdmin).toBeTruthy(),
-          expect(LogeoAdmin).toBe('Administrador Permitido!');
-      },
+    service.LoginAdmin(adminCredentials).subscribe((response: any) => {
+      // Verificar propiedades específicas en la respuesta
+      expect(response).toEqual('Administrador Permitido!');
     });
+
+    const req = httpController.expectOne(
+      `${URL_PRODUCCION.baseUrl}/TablaAdministradores/Verificacion`
+    );
+    expect(req.request.method).toEqual('POST');
+    expect(req.request.body).toEqual(adminCredentials);
+
+    // Respuesta de nuestro Mock :
+    const mockResponse = 'Administrador Permitido!';
+    req.flush(mockResponse);
   });
 });
 
