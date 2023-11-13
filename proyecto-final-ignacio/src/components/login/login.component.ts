@@ -103,7 +103,6 @@ export class LoginComponent {
           this.store.dispatch(
             conunterAxions.login({ EstadoDelUsuario: value })
           );
-
           //* OBTENEMOS EL ESTADO DE REDUX Y GUARDAMOS EN LOCAL STORAGE :
           this.store.select(SelectAuthUser).subscribe((value) => {
             AgregarUser(value);

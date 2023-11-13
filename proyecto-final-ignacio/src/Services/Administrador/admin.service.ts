@@ -17,7 +17,7 @@ export class AdminService {
   }
 
   getAdministradores() {
-    return this.http.get<IAdmin>(
+    return this.http.get<IAdmin[]>(
       `${URL_PRODUCCION.baseUrl}/TablaAdministradores`
     );
   }
