@@ -1,0 +1,85 @@
+<!------------------------------- FORMULARIO PARA LOGIN DE ADMINISTRADOR ----------------------------->
+<main>
+  <form [formGroup]="LogeoEstudiante">
+    <h1
+      style="text-align: center"
+      translate="ColumnaNameAlumnoInscripcion"
+    ></h1>
+
+    <!--------------NOMBRE--------------->
+
+    <mat-form-field>
+      <mat-label translate="LabelNombreForm"></mat-label>
+      <input formControlName="nombre" type="text" matInput />
+      <button mat-icon-button matSuffix>
+        <mat-icon>person</mat-icon>
+      </button>
+      <mat-error translate="ErrorNombreForm"></mat-error>
+    </mat-form-field>
+    <br />
+
+    <!---------------EMAIL---------------->
+
+    <br />
+    <mat-form-field>
+      <mat-label translate="LabelEmailForm"></mat-label>
+      <input formControlName="email" matInput />
+      <button mat-icon-button matSuffix>
+        <mat-icon>email</mat-icon>
+      </button>
+      <mat-error
+        *ngIf="LogeoEstudiante.controls['email'].errors?.['required']"
+        translate="ErrorEmailForm"
+      ></mat-error>
+      <mat-error
+        *ngIf="LogeoEstudiante.controls['email'].errors?.['email'] && !LogeoEstudiante.controls['email'].errors?.['required']"
+        translate="ErrorEmailInvalidForm"
+      ></mat-error>
+    </mat-form-field>
+    <br />
+
+    <!---------------PASSWORD---------------->
+    <br />
+
+    <mat-form-field>
+      <mat-label translate="LabelPasswordForm"></mat-label>
+      <input
+        formControlName="password"
+        matInput
+        [type]="hide ? 'password' : 'text'"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+      <mat-error translate="ErrorPasswordForm"></mat-error>
+    </mat-form-field>
+    <br />
+
+    <!--------------------BOTONES-------------------->
+
+    <button
+      style="width: 100%"
+      (click)="SubmitLogin()"
+      type="submit"
+      mat-raised-button
+      color="primary"
+      translate="BotonSubmit"
+    ></button>
+    <button
+      style="width: 100%"
+      mat-stroked-button
+      color="primary"
+      translate="BotonVolver"
+      routerLink="/Login"
+    ></button>
+    <br />
+  </form>
+</main>
+
+<app-footer></app-footer>

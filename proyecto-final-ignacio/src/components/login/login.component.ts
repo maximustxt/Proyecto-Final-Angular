@@ -7,12 +7,12 @@ import { AdminService } from 'src/Services/Administrador/admin.service';
 import { HotToastService } from '@ngneat/hot-toast';
 //* STORE :
 import { Store } from '@ngrx/store';
-//* ACCIONES :
-import { conunterAxions } from 'src/Redux/Actions/Actions';
-//* SELECTOR DEL ESTADO :
-import { SelectAuthUser } from 'src/Redux/Selectors/Selectores';
 //* LOCAL STORAGE :
-import AgregarUser from '../LocalStorage/AgregarUser';
+import AgregarAdministrador from '../LocalStorage/Admin/AgregarAdministrador';
+//* ACTIOSN :
+import { LoginAdminActions } from './pages/store/login-admin.actions';
+//* SELECT LOGIN ADMIN :
+import { selectLoginAdmin } from './pages/store/login-admin.selectors';
 
 @Component({
   selector: 'app-login',
@@ -20,15 +20,11 @@ import AgregarUser from '../LocalStorage/AgregarUser';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  iniciarSesion() {
-    throw new Error('Method not implemented.');
-  }
   LogeoAdmin!: FormGroup;
   hide = true;
 
   constructor(
     private formBuilder: FormBuilder,
-    private servicioAdmin: AdminService,
     private router: Router,
     private toast: HotToastService,
     private store: Store
@@ -97,21 +93,20 @@ export class LoginComponent {
     } else if (this.LogeoAdmin.invalid) {
       this.AlertaErroresEnLosCampos();
     } else {
-      this.servicioAdmin.LoginAdmin(this.LogeoAdmin.value).subscribe({
+      this.store.dispatch(
+        LoginAdminActions.loadLoginAdmins({ data: this.LogeoAdmin.value })
+      );
+
+      this.store.select(selectLoginAdmin).subscribe({
         next: (value: any) => {
-          // INTERACCION CON EL ESTADO DE REDUX :
-          this.store.dispatch(
-            conunterAxions.login({ EstadoDelUsuario: value })
-          );
-          //* OBTENEMOS EL ESTADO DE REDUX Y GUARDAMOS EN LOCAL STORAGE :
-          this.store.select(SelectAuthUser).subscribe((value) => {
-            AgregarUser(value);
-          });
-          this.router.navigate(['Alumnos']);
-          this.AlertaAdminLogeado();
-        },
-        error: (e) => {
-          this.AlertaErroresLogin(e.error);
+          if (value) {
+            AgregarAdministrador(value);
+            this.router.navigate(['Alumnos']);
+            this.AlertaAdminLogeado();
+            setTimeout(() => {
+              document.location.reload();
+            }, 50);
+          }
         },
       });
     }

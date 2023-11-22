@@ -13,6 +13,11 @@ import { ICursos } from 'src/common/Interfaces';
 import { DialogoCursosComponent } from '../dialogo-cursos/dialogo-cursos.component';
 import { Observable, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+//* ACTIONS :
+import { CursosActions } from './pages/store/cursos.actions';
+//* SELECT COURSES :
+import { selectCursos } from './pages/store/cursos.selectors';
 
 @Component({
   selector: 'app-cursos',
@@ -23,7 +28,8 @@ export class CursosComponent implements OnInit, OnDestroy {
   constructor(
     public dialog: MatDialog,
     private ServiceCurso: CursosService,
-    private router: Router
+    private router: Router,
+    private store: Store
   ) {}
 
   //- SUSCRIPTION :
@@ -46,8 +52,8 @@ export class CursosComponent implements OnInit, OnDestroy {
   dataSource = new MatTableDataSource(this.Cursos);
 
   ngOnInit(): void {
-    this.Cursos$ = this.ServiceCurso.getCursos();
-
+    this.store.dispatch(CursosActions.loadCursoss());
+    this.Cursos$ = this.store.select(selectCursos);
     this.Suscribe = this.Cursos$.subscribe((Cursos: any) => {
       this.Cursos = Cursos;
       this.dataSource = new MatTableDataSource(this.Cursos);

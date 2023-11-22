@@ -7,6 +7,9 @@ import { Observable, Subscription } from 'rxjs';
 import { IAdmin } from 'src/common/Interfaces';
 import { MatPaginator } from '@angular/material/paginator';
 import { DialogoAdministradoresComponent } from '../dialogo-administradores/dialogo-administradores.component';
+import { Store } from '@ngrx/store';
+import { AdminActions } from './pages/store/admin.actions';
+import { selectorAdmin } from './pages/store/admin.selectors';
 
 @Component({
   selector: 'app-administradores',
@@ -19,7 +22,8 @@ export class AdministradoresComponent {
   constructor(
     public dialog: MatDialog,
     private ServiceAdmin: AdminService,
-    private router: Router
+    private router: Router,
+    private store: Store
   ) {}
 
   // //- SUSCRIPTION :
@@ -38,7 +42,9 @@ export class AdministradoresComponent {
   dataSource = new MatTableDataSource(this.Administrador);
 
   ngOnInit(): void {
-    this.Administrador$ = this.ServiceAdmin.getAdministradores();
+    this.store.dispatch(AdminActions.loadAdmins());
+
+    this.Administrador$ = this.store.select(selectorAdmin);
     this.Suscribe = this.Administrador$.subscribe((Administrador: any) => {
       this.Administrador = Administrador;
       this.dataSource = new MatTableDataSource(this.Administrador);

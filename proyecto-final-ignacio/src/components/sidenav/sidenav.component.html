@@ -26,7 +26,6 @@
       />
     </a>
   </ng-container>
-  <div></div>
 </mat-toolbar>
 
 <!-------- SIDENAV --------->
@@ -45,7 +44,7 @@
     <mat-nav-list>
       <!----------------BOTON DE INICIO---------------->
 
-      <div mat-icon-button class="ContainerHome">
+      <div *ngIf="!AlumnosLogeado._id" mat-icon-button class="ContainerHome">
         <mat-icon class="Icono">person</mat-icon>
         <a
           (click)="RedirijirAlumnos()"
@@ -53,11 +52,14 @@
           translate="BotonAlumno"
         ></a>
       </div>
-      <br />
 
       <!----------------BOTON DE CURSOS---------------->
 
-      <div mat-icon-button class="ContainerContact">
+      <div
+        *ngIf="!AlumnosLogeado._id && Admin"
+        mat-icon-button
+        class="ContainerContact"
+      >
         <mat-icon class="Icono">book</mat-icon>
         <a
           (click)="RedirijirCursos()"
@@ -65,11 +67,14 @@
           translate="BotonCursos"
         ></a>
       </div>
-      <br />
 
       <!----------------BOTON DE INSCRIPCIONES---------------->
 
-      <div mat-icon-button class="ContainerContact">
+      <div
+        *ngIf="!AlumnosLogeado._id && Admin"
+        mat-icon-button
+        class="ContainerContact"
+      >
         <mat-icon class="Icono">assignment_turned_in</mat-icon>
         <a
           (click)="RedirijirInscripciones()"
@@ -77,11 +82,59 @@
           translate="BotonInscripciones"
         ></a>
       </div>
-      <br />
+
+      <!----------------BOTON DE HOME---------------->
+
+      <div
+        *ngIf="AlumnosLogeado._id && !Admin"
+        mat-icon-button
+        class="ContainerHome"
+      >
+        <mat-icon class="Icono">home</mat-icon>
+        <a
+          (click)="RedirijirHome()"
+          (click)="snav.toggle()"
+          translate="BotonHome"
+        ></a>
+      </div>
+
+      <!----------------BOTON DE PERFIL ALUMNO ---------------->
+
+      <div
+        *ngIf="AlumnosLogeado._id && !Admin"
+        mat-icon-button
+        class="ContainerHome"
+      >
+        <mat-icon class="Icono">person</mat-icon>
+        <a
+          (click)="RedirijirPerfil()"
+          (click)="snav.toggle()"
+          translate="BotonPerfil"
+        ></a>
+      </div>
+
+      <!----------------BOTON CURSOS DE ALUMNO ---------------->
+
+      <div
+        *ngIf="AlumnosLogeado._id && !Admin"
+        mat-icon-button
+        class="ContainerHome"
+      >
+        <mat-icon class="Icono">book</mat-icon>
+        <a
+          (click)="RedirijirMisCursos()"
+          (click)="snav.toggle()"
+          translate="BotonCursosAlumno"
+        ></a>
+      </div>
 
       <!----------------BOTON DE ADMINISTRADORES ---------------->
 
-      <div mat-icon-button class="ContainerContact">
+      <div
+        *ngIf="!AlumnosLogeado._id && Admin"
+        mat-icon-button
+        class="ContainerContact"
+      >
         <mat-icon class="Icono">supervised_user_circle</mat-icon>
         <a
           (click)="RedirijirAdministradores()"
@@ -89,17 +142,32 @@
           translate="BotonAdministradores"
         ></a>
       </div>
-      <br />
+      <!---------------- BOTON ESTADISTICAS ADMIN ---------------->
 
-      <!----------------BOTON LOGOUT---------------->
-
-      <ng-container *ngIf="Admin">
-        <div mat-icon-button class="ContainerContact" routerLink="/Login">
-          <mat-icon class="Icono">logout</mat-icon>
-          <a (click)="MetodoLogout()" translate="BotonLogOut"></a>
+      <ng-container *ngIf="Admin && !AlumnosLogeado">
+        <div mat-icon-button class="ContainerContact">
+          <mat-icon class="Icono">insert_chart</mat-icon>
+          <a (click)="MetodoEstadisticas()" translate="BotonEstadisticas"></a>
         </div>
       </ng-container>
-      <br />
+
+      <!---------------- BOTON LOGOUT ADMIN ---------------->
+
+      <ng-container *ngIf="Admin && !AlumnosLogeado">
+        <div mat-icon-button class="ContainerContact" routerLink="/Login">
+          <mat-icon class="Icono">logout</mat-icon>
+          <a (click)="MetodoLogoutAdmin()" translate="BotonLogOut"></a>
+        </div>
+      </ng-container>
+
+      <!---------------- BOTON LOGOUT ALUMNO ---------------->
+
+      <ng-container *ngIf="AlumnosLogeado && !Admin">
+        <div mat-icon-button class="ContainerContact" routerLink="/Login">
+          <mat-icon class="Icono">logout</mat-icon>
+          <a (click)="MetodoLogoutAlumnos()" translate="BotonLogOut"></a>
+        </div>
+      </ng-container>
     </mat-nav-list>
   </mat-sidenav>
 

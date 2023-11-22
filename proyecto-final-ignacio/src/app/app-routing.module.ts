@@ -1,19 +1,55 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-//*- COMPONENTES :
-import { LoginComponent } from 'src/components/login/login.component';
-//* GUARDIAN :
-import { AuthGuard } from '../guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent, canActivate: [AuthGuard] },
-  // { path: '', component: LoginComponent },
+  {
+    path: '',
+    loadChildren: () =>
+      import('../components/login/pages/login-admin.module').then(
+        (m) => m.LoginAdminModule
+      ),
+  },
+  {
+    path: 'MisCursos',
+    loadChildren: () =>
+      import('../components/cursos-de-alumnos/pages/pages.module').then(
+        (m) => m.PagesMisCursosModule
+      ),
+  },
+  {
+    path: 'Estadisticas',
+    loadChildren: () =>
+      import('../components/estadisticas/Page/estadisticas.module').then(
+        (m) => m.EstaditicasModule
+      ),
+  },
+  {
+    path: 'Home',
+    loadChildren: () =>
+      import('../components/home/pages/pages.module').then(
+        (m) => m.PagesHomeModule
+      ),
+  },
+  {
+    path: 'PerfilAlumno',
+    loadChildren: () =>
+      import('../components/perfil-alumno/pages/perfil-alumno.module').then(
+        (m) => m.PerfilAlumnoModule
+      ),
+  },
   {
     path: 'Administradores',
     loadChildren: () =>
-      import('../components/administradores/pages/admin/admin.module').then(
+      import('../components/administradores/pages/admin.module').then(
         (m) => m.AdminModule
       ),
+  },
+  {
+    path: 'LoginEstudiantes',
+    loadChildren: () =>
+      import(
+        '../components/login-estudiante/pages/login-estudiante.module'
+      ).then((m) => m.LoginEstudianteModule),
   },
   {
     path: 'Alumnos',
@@ -54,7 +90,7 @@ const routes: Routes = [
   {
     path: 'DetailAdmin/:id',
     loadChildren: () =>
-      import('../components/detail-admin/pages/admin/admin.module').then(
+      import('../components/detail-admin/pages/admin.module').then(
         (m) => m.AdminModule
       ),
   },

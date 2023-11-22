@@ -1,8 +1,22 @@
-<h1>INSCRIPCIONES DE ALUMNOS</h1>
 <br />
 <br />
 <br />
 <br />
+<br />
+<br />
+
+<div class="ContainerTitulo_CrearInscripcion">
+  <h1 appTitleFontSize translate="TituloInscripcion"></h1>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="openDialog()"
+    translate="BotonCrearInscricion"
+  ></button>
+</div>
+
+<br />
+
 <main>
   <mat-form-field class="Buscador">
     <mat-label translate="LabelList"></mat-label>
@@ -24,14 +38,41 @@
         </ng-container>
 
         <!-- Curso Inscripto Column -->
-        <ng-container matColumnDef="Curso Inscripto">
+        <ng-container matColumnDef="Cursos Inscripto">
           <th
             mat-header-cell
             *matHeaderCellDef
             translate="ColumnaCursoInscripto"
           ></th>
+          <td class="ContainerCursos" mat-cell *matCellDef="let element">
+            <ng-container *ngFor="let curso of element.cursos">
+              <p>{{ curso.nombre }}</p>
+            </ng-container>
+          </td>
+        </ng-container>
+
+        <!-- Acciones Column -->
+        <ng-container matColumnDef="Acciones">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            translate="ColumnaAcciones"
+          ></th>
           <td mat-cell *matCellDef="let element">
-            {{ element.cursando }}
+            <div class="ContainerBotonsCrearDelete">
+              <a
+                class="IconEdit"
+                matTooltip="Editar Inscripcion"
+                (click)="EditAdministrador(element)"
+                ><mat-icon>edit</mat-icon></a
+              >
+              <a
+                (click)="eliminarAdministrador(element)"
+                class="IconDelete"
+                matTooltip="Eliminar Inscripcion"
+                ><mat-icon>delete</mat-icon></a
+              >
+            </div>
           </td>
         </ng-container>
 
@@ -52,3 +93,9 @@
     </section>
   </div>
 </main>
+
+<br />
+<br />
+<br />
+
+<app-footer></app-footer>

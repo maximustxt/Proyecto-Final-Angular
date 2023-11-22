@@ -2,7 +2,7 @@ export interface IAlumnos {
   _id?: string;
   nombre: string;
   apellido: string;
-  cursos: [];
+  cursos: any[];
   edad: number;
   imagen: string;
   cursando: string;

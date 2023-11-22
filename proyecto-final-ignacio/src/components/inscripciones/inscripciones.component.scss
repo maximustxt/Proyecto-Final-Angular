@@ -4,10 +4,27 @@ main {
   align-items: center;
 }
 
+.ContainerTitulo_CrearInscripcion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 70px;
+}
+
 section {
   width: fit-content;
   margin: 5px;
   width: 100%;
+}
+
+.ContainerCursos {
+  display: grid;
+  grid-template-columns: 50% auto;
+  padding: 20px 20px;
+}
+
+.ContainerTabla {
+  width: 90%;
 }
 
 table {
@@ -15,17 +32,51 @@ table {
   height: 100%;
 }
 
-h1 {
-  text-align: center;
-  margin-top: 150px;
+.Buscador {
+  width: 90%;
 }
 
-.Buscador {
-  width: 40%;
+.ContainerBotonsCrearDelete {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.IconEdit {
+  color: #1f516f;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.IconDelete {
+  color: #e15639;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.ContainerBotonsCrearDelete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 @media (max-width: 500px) {
   .Buscador {
     width: 90%;
+  }
+
+  .ContainerTitulo_CrearInscripcion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    button {
+      margin: 5px;
+    }
+  }
+
+  .ContainerCursos {
+    display: grid;
+    grid-template-columns: auto;
+    padding: 20px 20px;
   }
 }

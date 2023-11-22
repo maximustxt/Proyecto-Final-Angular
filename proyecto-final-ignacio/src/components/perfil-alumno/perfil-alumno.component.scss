@@ -1,0 +1,25 @@
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 200px;
+}
+
+h1 {
+  background-color: rgb(153, 207, 214);
+  font-size: 30px;
+  padding: 10px 10px;
+  border-radius: 10px;
+}
+
+img {
+  width: 100px; /* Ajusta el ancho según tus necesidades */
+  height: 100px; /* Ajusta la altura según tus necesidades */
+  border-radius: 50%; /* Para hacer la imagen redonda, ajusta según tus necesidades */
+}
+
+h5 {
+  color: #333; /* Color del texto, ajusta según tus necesidades */
+  margin-bottom: 10px; /* Margen inferior, ajusta según tus necesidades */
+}

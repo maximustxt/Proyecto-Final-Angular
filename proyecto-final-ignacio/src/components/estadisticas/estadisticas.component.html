@@ -1,0 +1,56 @@
+<!------------------------------ ESTADISTICAS -------------------------------->
+<section>
+  <!-- ESTADISTICA 1 -->
+
+  <canvas
+    baseChart
+    class="chart"
+    [data]="barChartData"
+    [options]="barChartOptions"
+    [plugins]="barChartPlugins"
+    [type]="barChartType"
+    (chartHover)="chartHovered($event)"
+    (chartClick)="chartClicked($event)"
+  >
+  </canvas>
+
+  <!-- ESTADISTICA 2 -->
+
+  <br />
+  <br />
+  <br />
+  <br />
+
+  <canvas
+    baseChart
+    class="chart"
+    [data]="barChartDataAlumnos"
+    [options]="barChartOptions"
+    [plugins]="barChartPlugins"
+    [type]="barChartType"
+    (chartHover)="chartHovered($event)"
+    (chartClick)="chartClicked($event)"
+  >
+  </canvas>
+
+  <!-- ESTADISTICA 3 -->
+
+  <br />
+  <br />
+  <br />
+  <br />
+
+  <canvas
+    baseChart
+    class="chart"
+    [data]="barChartDataAdministradores"
+    [options]="barChartOptions"
+    [plugins]="barChartPlugins"
+    [type]="barChartType"
+    (chartHover)="chartHovered($event)"
+    (chartClick)="chartClicked($event)"
+  >
+  </canvas>
+</section>
+
+<app-footer></app-footer>

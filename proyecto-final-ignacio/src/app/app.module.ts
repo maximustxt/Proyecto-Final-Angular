@@ -6,11 +6,17 @@ import { AppComponent } from './app.component';
 import { SharedModule } from '../shared/shared.module';
 import { StoreModule } from '@ngrx/store';
 //* CONFIGURACION DE NUESTRO STORE / REDUX :
-import { appReducer } from 'src/Redux/Store';
+import { EffectsModule } from '@ngrx/effects';
+import { reduce } from 'rxjs';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [SharedModule, BrowserModule, StoreModule.forRoot(appReducer, {})],
+  imports: [
+    SharedModule,
+    BrowserModule,
+    StoreModule.forRoot(reduce, {}),
+    EffectsModule.forRoot([]),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

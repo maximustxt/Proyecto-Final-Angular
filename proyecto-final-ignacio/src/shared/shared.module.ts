@@ -27,7 +27,7 @@ import { TitleFontSizeDirective } from '../directives/title-font-size.directive'
 //*- Components :
 import { FooterComponent } from '../components/footer/footer.component';
 import { AlumnosComponent } from '../components/alumnos/alumnos.component';
-import { SidenavComponent } from '../components/sidenav/sidenav.component';
+import { SidenavComponent } from 'src/components/sidenav/sidenav.component';
 import { DialogoComponent } from 'src/components/dialogo/dialogo.component';
 import { DialogoCursosComponent } from 'src/components/dialogo-cursos/dialogo-cursos.component';
 import { CursosComponent } from 'src/components/cursos/cursos.component';
@@ -38,11 +38,22 @@ import { InscripcionesComponent } from 'src/components/inscripciones/inscripcion
 import { AdministradoresComponent } from 'src/components/administradores/administradores.component';
 import { DetailAdminComponent } from 'src/components/detail-admin/detail-admin.component';
 import { DialogoAdministradoresComponent } from 'src/components/dialogo-administradores/dialogo-administradores.component';
+import { LoginEstudianteComponent } from 'src/components/login-estudiante/login-estudiante.component';
+import { PerfilAlumnoComponent } from 'src/components/perfil-alumno/perfil-alumno.component';
+import { HomeComponent } from 'src/components/home/home.component';
+import { CursosDeAlumnosComponent } from 'src/components/cursos-de-alumnos/cursos-de-alumnos.component';
+import { DialogoInscripcionesComponent } from 'src/components/dialogo-inscripciones/dialogo-create/dialogo-Create-inscripciones.component';
+import { DialogoDeleteComponent } from 'src/components/dialogo-inscripciones/dialogo-delete/dialogo-delete.component';
+import { DialogoEditComponent } from 'src/components/dialogo-inscripciones/dialogo-edit/dialogo-edit.component';
+import { EstadisticasComponent } from 'src/components/estadisticas/estadisticas.component';
 
 //*- import ngx-translate and the http loader
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+
+//*- CARD :
+import { MatCardModule } from '@angular/material/card';
 
 //*- MODULO DE DIALOG :
 import { MatDialogModule } from '@angular/material/dialog';
@@ -71,6 +82,9 @@ import { MatTableModule } from '@angular/material/table';
 //*- PAGINACION ANGULAR MATERIAL :
 import { MatPaginatorModule } from '@angular/material/paginator';
 
+//* MODULO DE ESTADISTICAS :
+import { NgChartsConfiguration, NgChartsModule } from 'ng2-charts';
+
 // required for AOT compilation
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -82,10 +96,12 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     TitleFontSizeDirective,
     DialogoComponent,
     DialogoCursosComponent,
+    CursosDeAlumnosComponent,
     FooterComponent,
     SidenavComponent,
     AlumnosComponent,
     CursosComponent,
+    HomeComponent,
     DetailAlumnoComponent,
     DetailCursosComponent,
     LoginComponent,
@@ -93,10 +109,20 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     AdministradoresComponent,
     DetailAdminComponent,
     DialogoAdministradoresComponent,
+    LoginEstudianteComponent,
+    PerfilAlumnoComponent,
+    DialogoInscripcionesComponent,
+    DialogoDeleteComponent,
+    DialogoEditComponent,
+    EstadisticasComponent,
+  ],
+  providers: [
+    { provide: NgChartsConfiguration, useValue: { generateColors: false } },
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
+    NgChartsModule,
     HotToastModule.forRoot(),
     MatNativeDateModule,
     BrowserModule,
@@ -108,6 +134,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     MatIconModule,
     MatListModule,
     MatFormFieldModule,
+    MatCardModule,
     MatInputModule,
     MatSelectModule,
     MatDividerModule,
@@ -129,6 +156,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   exports: [
     BrowserModule,
     AppRoutingModule,
+    NgChartsModule,
     PipeNombreApellidoPipe,
     TitleFontSizeDirective,
     LoginComponent,
@@ -139,11 +167,19 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     SidenavComponent,
     AlumnosComponent,
     CursosComponent,
+    EstadisticasComponent,
+    PerfilAlumnoComponent,
     DetailAlumnoComponent,
     DetailCursosComponent,
     InscripcionesComponent,
     AdministradoresComponent,
+    DialogoDeleteComponent,
+    DialogoEditComponent,
+    DialogoInscripcionesComponent,
+    HomeComponent,
     DialogoAdministradoresComponent,
+    CursosDeAlumnosComponent,
+    LoginEstudianteComponent,
     DetailAdminComponent,
     BrowserAnimationsModule,
     ReactiveFormsModule,
@@ -157,6 +193,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     MatDividerModule,
     MatButtonModule,
     MatTableModule,
+    MatCardModule,
     MatTooltipModule,
     MatPaginatorModule,
     MatDialogModule,

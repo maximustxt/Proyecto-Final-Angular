@@ -1,0 +1,13 @@
+@media (max-width: 540px) {
+  .ContainerSelectInscripciones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+  }
+
+  .ContainerBotones {
+    display: flex;
+    justify-content: center;
+  }
+}

@@ -16,11 +16,16 @@ import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 //* STORE :
 import { Store } from '@ngrx/store';
-//* AXIONS :
-import { conunterAxions } from 'src/Redux/Actions/Actions';
+
 //* LOCAL STORAGE :
-import EliminarUser from '../LocalStorage/EliminarUser';
-import ObtenerUser from '../LocalStorage/ObtenerUser';
+import EliminarAdministrador from '../LocalStorage/Admin/EliminarAdministrador';
+import ObtenerAdministrador from '../LocalStorage/Admin/ObtenerAdministrador';
+import ObtenerAlumno from '../LocalStorage/Alumnos/ObtenerAlumno';
+import { IAlumnos } from 'src/common/Interfaces';
+import EliminarAlumno from '../LocalStorage/Alumnos/EliminarAlumno';
+//* ACTIONS :
+import { LoginAdminActions } from '../login/pages/store/login-admin.actions';
+import { LoginAlumnosActions } from '../login-estudiante/pages/store/login-alumnos.actions';
 
 @Component({
   selector: 'app-sidenav',
@@ -42,6 +47,8 @@ export class SidenavComponent implements OnDestroy, OnInit {
 
   shouldRun = true;
 
+  AlumnosLogeado: IAlumnos;
+
   Suscription: Subscription = new Subscription();
 
   mobileQuery: MediaQueryList;
@@ -61,6 +68,7 @@ export class SidenavComponent implements OnDestroy, OnInit {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
+    this.AlumnosLogeado = ObtenerAlumno();
   }
 
   @ViewChild('snav') sidenav!: MatSidenav;
@@ -81,11 +89,15 @@ export class SidenavComponent implements OnDestroy, OnInit {
   //* CUANDO EL COMPONENTE SE MONTA :
 
   ngOnInit(): void {
-    this.Admin = ObtenerUser();
+    this.Admin = ObtenerAdministrador();
   }
 
   metodOpenMenu() {
-    this.sidenav.toggle();
+    if (ObtenerAdministrador() || ObtenerAlumno()) {
+      this.sidenav.toggle();
+    } else {
+      this.AlertaAdminLogeado();
+    }
   }
 
   MetodoCambioDeIdioma(valor: string) {
@@ -93,14 +105,33 @@ export class SidenavComponent implements OnDestroy, OnInit {
     this.CambioDeIdioma = !this.CambioDeIdioma;
   }
 
-  //* METODO LOGOUT :
+  //* METODOS LOGOUT :
 
-  MetodoLogout() {
+  MetodoLogoutAdmin() {
     this.sidenav.toggle();
     //* HACEMOS UN LOGOUT CON REDUX :
-    this.store.dispatch(conunterAxions.logout());
+    this.store.dispatch(LoginAdminActions.logout());
     //* ELIMINO EL LOCAL STORAGE:
-    EliminarUser();
+    EliminarAdministrador();
+
+    setTimeout(() => {
+      document.location.reload();
+    }, 100);
+
+    this.router.navigate(['']);
+  }
+
+  MetodoLogoutAlumnos() {
+    this.sidenav.toggle();
+    //* HACEMOS UN LOGOUT CON REDUX :
+    this.store.dispatch(LoginAlumnosActions.logout());
+    //* ELIMINO EL LOCAL STORAGE:
+    EliminarAlumno();
+
+    setTimeout(() => {
+      document.location.reload();
+    }, 100);
+
     this.router.navigate(['']);
   }
 
@@ -114,7 +145,7 @@ export class SidenavComponent implements OnDestroy, OnInit {
   //* FUNCION QUE REDIRIJE A LOS ALUMNOS :
 
   RedirijirAlumnos() {
-    if (!ObtenerUser()) {
+    if (!ObtenerAdministrador()) {
       this.AlertaAdminLogeado();
     } else {
       this.router.navigate(['Alumnos']);
@@ -124,7 +155,7 @@ export class SidenavComponent implements OnDestroy, OnInit {
   //* FUNCION QUE REDIRIJE A LOS CURSOS :
 
   RedirijirCursos() {
-    if (!ObtenerUser()) {
+    if (!ObtenerAdministrador()) {
       this.AlertaAdminLogeado();
     } else {
       this.router.navigate(['Cursos']);
@@ -134,7 +165,7 @@ export class SidenavComponent implements OnDestroy, OnInit {
   //* FUNCION QUE REDIRIJE A LAS INSCRIPCIONES :
 
   RedirijirInscripciones() {
-    if (!ObtenerUser()) {
+    if (!ObtenerAdministrador()) {
       this.AlertaAdminLogeado();
     } else {
       this.router.navigate(['Inscripciones']);
@@ -144,10 +175,44 @@ export class SidenavComponent implements OnDestroy, OnInit {
   //* FUNCION QUE REDIRIJE A LAS ADMINISTRADORES :
 
   RedirijirAdministradores() {
-    if (!ObtenerUser()) {
+    if (!ObtenerAdministrador()) {
       this.AlertaAdminLogeado();
     } else {
       this.router.navigate(['Administradores']);
+    }
+  }
+
+  //* FUNCION QUE REDIRIJE A LA HOME :
+
+  RedirijirHome() {
+    if (!ObtenerAlumno()) {
+      this.AlertaAdminLogeado();
+    } else {
+      this.router.navigate(['Home']);
+    }
+  }
+
+  RedirijirPerfil() {
+    if (!ObtenerAlumno()) {
+      this.AlertaAdminLogeado();
+    } else {
+      this.router.navigate(['PerfilAlumno']);
+    }
+  }
+
+  RedirijirMisCursos() {
+    if (!ObtenerAlumno()) {
+      this.AlertaAdminLogeado();
+    } else {
+      this.router.navigate(['MisCursos']);
+    }
+  }
+
+  MetodoEstadisticas() {
+    if (!ObtenerAdministrador()) {
+      this.AlertaAdminLogeado();
+    } else {
+      this.router.navigate(['Estadisticas']);
     }
   }
 }

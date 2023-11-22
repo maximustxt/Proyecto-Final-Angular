@@ -19,6 +19,13 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogoComponent } from '../dialogo/dialogo.component';
 import { Observable, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+
+//* SELECT ALUMNOS :
+import { selectAlumnos } from './pages/store/alumnos.selectors';
+
+//* ACTIONS :
+import { AlumnosActions } from './pages/store/alumnos.actions';
 
 @Component({
   selector: 'app-alumnos',
@@ -29,7 +36,8 @@ export class AlumnosComponent implements OnInit, OnDestroy {
   constructor(
     public dialog: MatDialog,
     private ServiceAlumno: AlumnosService,
-    private router: Router
+    private router: Router,
+    private store: Store
   ) {}
 
   //- SUSCRIPTION :
@@ -52,12 +60,9 @@ export class AlumnosComponent implements OnInit, OnDestroy {
   dataSource = new MatTableDataSource(this.Alumnos);
 
   ngOnInit(): void {
-    // setTimeout(() => {
-    //   document.location.reload();
-    // }, 100);
-    this.Alumnos$ = this.ServiceAlumno.getAlumnos();
-
-    this.Suscribe = this.Alumnos$.subscribe((Alumnos: any) => {
+    this.store.dispatch(AlumnosActions.loadAlumnoss());
+    this.Alumnos$ = this.store.select(selectAlumnos);
+    this.Suscribe = this.Alumnos$.subscribe((Alumnos: IAlumnos[]) => {
       this.Alumnos = Alumnos;
       this.dataSource = new MatTableDataSource(this.Alumnos);
     });

@@ -1,0 +1,34 @@
+<h1 mat-dialog-title translate="TituloInscripcion"></h1>
+<div class="ContainerSelectInscripciones" mat-dialog-content>
+  <mat-form-field style="margin: 15px">
+    <mat-label>Cursos</mat-label>
+    <mat-select [formControl]="courseIdControl" multiple>
+      <ng-container *ngFor="let curso of Cursos">
+        <mat-option [value]="curso._id">{{ curso.nombre }}</mat-option>
+      </ng-container>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field style="margin: 15px">
+    <mat-label>Alumnos</mat-label>
+    <mat-select [formControl]="userIdControl">
+      <ng-container *ngFor="let alumno of Alumnos">
+        <mat-option [value]="alumno._id">{{ alumno.nombre }}</mat-option>
+      </ng-container>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div class="ContainerBotones" mat-dialog-actions>
+  <button
+    translate="BotonCancelar"
+    (click)="CerrarDialogo()"
+    mat-stroked-button
+    color="primary"
+  ></button>
+  <button
+    translate="BotonGuardarForm"
+    (click)="OnSubmit()"
+    mat-stroked-button
+    color="primary"
+  ></button>
+</div>

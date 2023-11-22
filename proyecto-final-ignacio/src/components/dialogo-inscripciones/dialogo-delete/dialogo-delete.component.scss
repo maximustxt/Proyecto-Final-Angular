@@ -1,0 +1,23 @@
+.ContainerCursoEliminar {
+  display: flex;
+  justify-content: start;
+  margin: 20px;
+}
+
+input {
+  width: 25px;
+  height: 25px;
+  margin: 10px;
+}
+
+.ContainerBotones {
+  display: flex;
+  justify-content: start;
+  button {
+    margin: 10px;
+  }
+}
+
+section {
+  width: 100%;
+}

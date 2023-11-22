@@ -1,0 +1,32 @@
+<section>
+  <h1 mat-dialog-title translate="EliminarInscripciones"></h1>
+  <ng-container *ngFor="let curso of Alumno?.cursos">
+    <div class="ContainerCursoEliminar">
+      <h1>{{ curso.nombre }}</h1>
+      <input
+        (change)="FuncionEliminarInscripcion($event)"
+        type="checkbox"
+        [value]="curso.nombre"
+      />
+    </div>
+  </ng-container>
+
+  <div class="ContainerBotones">
+    <button
+      (click)="OnSubmit()"
+      type="submit"
+      mat-raised-button
+      color="primary"
+      translate="BotonGuardarForm"
+    ></button>
+
+    <button
+      mat-button
+      color="primary"
+      type="button"
+      translate="BotonNoGracias"
+      (click)="CerrarDialogo()"
+    ></button>
+  </div>
+  <br />
+</section>

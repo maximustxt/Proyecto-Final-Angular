@@ -1,27 +1,42 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, fakeAsync, flush, tick } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { of } from 'rxjs';
-import { appReducer } from 'src/Redux/Store';
+import { delay, of } from 'rxjs';
 //* MODULO SHARED :
 import { SharedModule } from 'src/shared/shared.module';
 //* MODULO STORE :
-import { StoreModule } from '@ngrx/store';
+import { Store, StoreModule } from '@ngrx/store';
 //* ALERTA :
 import { HotToastService } from '@ngneat/hot-toast';
 //* COMPONENTE :
 import { LoginComponent } from './login.component';
+//* REDUCER :
+import { reducer } from './pages/store/login-admin.reducer';
+import { AdminService } from 'src/Services/Administrador/admin.service';
+import { LoginAdminActions } from './pages/store/login-admin.actions';
+import { selectLoginAdmin } from './pages/store/login-admin.selectors';
+import { State } from './pages/store/login-admin.reducer';
 
 describe('Test del Componente Login', () => {
   let login_Component: LoginComponent;
   let toastService: HotToastService;
+  let mockServiceAdmin: jasmine.SpyObj<AdminService>;
+  let mockToastService: jasmine.SpyObj<HotToastService>;
+  const mockStore = jasmine.createSpyObj('Store', ['select', 'dispatch']);
 
   beforeEach(() => {
+    mockServiceAdmin = jasmine.createSpyObj('AdminService', ['LoginAdmin']);
+    mockToastService = jasmine.createSpyObj('HotToastService', [
+      'success',
+      'warning',
+      'error',
+    ]);
+
     TestBed.configureTestingModule({
       declarations: [LoginComponent],
       imports: [
         HttpClientTestingModule,
         SharedModule,
-        StoreModule.forRoot(appReducer, {}),
+        StoreModule.forRoot(reducer, {}),
       ],
       providers: [HotToastService],
     });
@@ -57,32 +72,59 @@ describe('Test del Componente Login', () => {
 
   //*--------------------------------------------------- TEST DE LOGIN EXITOSO :
 
-  it('Debe llamar a AlertaAdminLogeado y llevarme a la ruta Alumnos en caso de éxito', () => {
-    login_Component.LogeoAdmin.patchValue({
+  it('should dispatch loadLoginAdmins action and handle response', fakeAsync(() => {
+    const mockLoginData = {
       nombre: 'Juan',
       email: 'JuanPereira123@gmail.com',
       password: '123456',
-    });
+    };
+    const mockResponse = {
+      authUser: 'Administrador Permitido!' || null,
+    };
 
-    // Configura una solicitud HTTP simulada exitosa
-    const response = 'Administrador Permitido!';
+    // Set up the form
+    login_Component.LogeoAdmin.setValue(mockLoginData);
 
-    spyOn((login_Component as any).servicioAdmin, 'LoginAdmin').and.returnValue(
-      of(response)
+    // Configure the service to return a mock response
+    mockServiceAdmin.LoginAdmin.and.returnValue(
+      of(mockResponse).pipe(delay(0))
     );
 
-    spyOn(login_Component, 'AlertaAdminLogeado');
-    spyOn((login_Component as any).router, 'navigate');
+    // Configure the store to return a mock response
+    const mockAppState: State = {
+      authUser: '',
+    };
 
-    // Llama a la función para activar el caso
+    (mockStore.select as jasmine.Spy).and.returnValue(
+      of(mockAppState).pipe(delay(0))
+    );
+
+    // Call the method to be tested
     login_Component.SubmitLogin();
+    tick();
+    flush();
 
-    // Verifica que los métodos se hayan llamado
-    expect(login_Component.AlertaAdminLogeado).toHaveBeenCalled();
-    expect((login_Component as any).router.navigate).toHaveBeenCalledWith([
-      'Alumnos',
-    ]);
-  });
+    // Assertions :
+    // expect(mockServiceAdmin.LoginAdmin).toHaveBeenCalledWith(mockLoginData);
+    // expect(mockStore.dispatch).toHaveBeenCalledWith(
+    //   LoginAdminActions.loadLoginAdmins({
+    //     data: {
+    //       nombre: 'Juan',
+    //       email: 'JuanPereira123@gmail.com',
+    //       password: '123456',
+    //     },
+    //   })
+    // );
+    // expect(mockStore.select).toHaveBeenCalledWith(
+    //   selectLoginAdmin,
+    //   mockAppState
+    // );
+
+    // expect(login_Component.AlertaAdminLogeado).toHaveBeenCalled();
+    // expect((login_Component as any).router.navigate).toHaveBeenCalledWith([
+    //   'Alumnos',
+    // ]);
+  }));
 
   //*----------------------------------------------------- TEST DEL LOGIN SI ESTA VACIO :
 

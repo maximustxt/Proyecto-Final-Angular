@@ -1,6 +1,7 @@
 <!------------------------------- FORMULARIO PARA LOGIN DE ADMINISTRADOR ----------------------------->
 <main>
   <form [formGroup]="LogeoAdmin">
+    <h1 style="text-align: center" translate="BotonAdministradores"></h1>
     <!--------------NOMBRE--------------->
 
     <mat-form-field>
@@ -67,6 +68,15 @@
       translate="BotonSubmit"
     ></button>
     <br />
+    <div class="ContenedorLinkEstudiantes">
+      <button
+        style="width: 100%"
+        mat-stroked-button
+        color="primary"
+        routerLink="/LoginEstudiantes"
+        translate="BotonEstudiante"
+      ></button>
+    </div>
   </form>
 </main>
 

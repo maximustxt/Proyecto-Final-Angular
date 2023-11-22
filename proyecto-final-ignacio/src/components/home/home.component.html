@@ -1,0 +1,40 @@
+<h1
+  style="
+    text-align: center;
+    margin-top: 150px;
+    font-size: 50px;
+    font-weight: 800;
+  "
+  translate="TituloHome"
+></h1>
+
+<section>
+  <hr />
+  <h1
+    translate="CursosCarreras"
+    style="text-align: center; margin: 50px; font-weight: 500"
+  ></h1>
+  <mat-card
+    style="margin: 15px"
+    *ngFor="let curso of Cursos"
+    class="example-card"
+  >
+    <mat-card-header>
+      <mat-card-title>{{ curso.nombre }}</mat-card-title>
+      <mat-card-subtitle>{{ curso.area }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>En este curso vas a encontrar lo siguiente :</p>
+      <p>{{ curso.descripcion }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        (click)="FuncInscripcion()"
+        translate="InscribirmeAhora"
+        mat-stroked-button
+        color="primary"
+      ></button>
+    </mat-card-actions>
+  </mat-card>
+</section>
+<app-footer></app-footer>
