@@ -89,18 +89,26 @@ export class InscripcionesComponent implements OnInit, OnDestroy {
         next: (Inscripcion: any) => {
           const { courseId, userId } = Inscripcion;
 
+          const AlumnoYaCreado = this.AlumnosInscriptos.find(
+            (a) => a._id === userId
+          );
+
           // ACA  ARIA EL POST DEL ALUMNO CON SUS CURSOS.
 
-          this.ServicesInscripciones.PostInscripciones(
-            userId,
-            courseId
-          ).subscribe({
-            next: (v: any) => {
-              this.AlertaInscripcionSuccess(v);
-              document.location.reload();
-            },
-            error: (e) => this.AlertaErrorInscripcion(e),
-          });
+          if (!AlumnoYaCreado) {
+            this.ServicesInscripciones.PostInscripciones(
+              userId,
+              courseId
+            ).subscribe({
+              next: (v: any) => {
+                this.AlertaInscripcionSuccess(v);
+                document.location.reload();
+              },
+              error: (e) => this.AlertaErrorInscripcion(e),
+            });
+          } else {
+            this.AlertaErrorInscripcion('Inscripcion ya creada!');
+          }
         },
       });
   }
