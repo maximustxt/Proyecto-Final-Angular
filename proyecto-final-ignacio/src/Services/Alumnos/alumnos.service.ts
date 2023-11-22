@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { URL_PRODUCCION } from 'src/Enviroments/Enviroments.prod';
 //*- INTERFACE :
 import { IAlumnos } from 'src/common/Interfaces';
-import { URL_LOCAL } from 'src/Enviroments/Enviroments.local';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +17,7 @@ export class AlumnosService {
   }
 
   getAlumnos() {
-    return this.http.get<IAlumnos[]>(`${URL_LOCAL.baseUrl}/Alumnos`);
+    return this.http.get<IAlumnos[]>(`${URL_PRODUCCION.baseUrl}/Alumnos`);
   }
 
   getDetailAlumno(id: string) {
