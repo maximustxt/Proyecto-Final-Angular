@@ -11,6 +11,8 @@
 
 📌 https://proyecto-final-angular-six.vercel.app/
 
+![image](https://github.com/maximustxt/Proyecto-Final-Angular/assets/119757609/6a0db6d4-a90b-495e-8a48-0068a26522b0)
+
 
 
 <br/>
