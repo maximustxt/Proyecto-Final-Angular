@@ -11,16 +11,26 @@
 
 📌 https://proyecto-final-angular-six.vercel.app/
 
+![image](https://github.com/maximustxt/Proyecto-Final-Angular/assets/119757609/6a0db6d4-a90b-495e-8a48-0068a26522b0)
 
 
 
+<br/>
 <h3>DATOS PARA PODER LOGEARSE COMO ADMINISTRADOR : </h3>
 
-<h4>+++++++++++++++++ DATOS ADMIN +++++++++++++</h4>
+<h4>+++++++++++++++++ DATOS ADMINISTRADOR +++++++++++++++++</h4>
 <p>Nombre : Juan</p>
 <p>Email : JuanPereira123@gmail.com</p>
 <p>Password : 123456</p>
+<br/>
+<h3>DATOS PARA PODER LOGEARSE COMO ALUMNO : </h3>
+
+<h4>+++++++++++++++++ DATOS ALUMNO +++++++++++++++++</h4>
+<p>Nombre : Pablo</p>
+<p>Email : Pablo123@gmail.com</p>
+<p>Password : 123456</p>
+<br/>
 
 
-<h4>📢 📢 ¡IMPORTANTE! : LA BASE DE DATOS TARDA EN RESPONDER. PERO DENTRO DE UNOS POCOS MINUTOS SE OBTENDRAN LOS DATOS</h4> 
+<h4>📢 📢 ¡IMPORTANTE! : LA BASE DE DATOS TARDA EN RESPONDER. PERO DENTRO DE UNOS POCOS SEGUNDOS / MINUTOS SE OBTENDRAN LOS DATOS</h4> 
 
