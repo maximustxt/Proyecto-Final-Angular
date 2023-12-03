@@ -2,8 +2,8 @@ import { inject } from '@angular/core';
 import { CanActivateFn } from '@angular/router';
 import { Router } from '@angular/router';
 //* LOCALSTORAGE :
-import ObtenerUser from 'src/components/LocalStorage/Admin/ObtenerAdministrador';
-import ObtenerAlumno from 'src/components/LocalStorage/Alumnos/ObtenerAlumno';
+import ObtenerUser from 'src/app/components/LocalStorage/Admin/ObtenerAdministrador';
+import ObtenerAlumno from 'src/app/components/LocalStorage/Alumnos/ObtenerAlumno';
 
 export const rutasGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);

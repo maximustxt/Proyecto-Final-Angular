@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 
 //- Interfaces :
-import { IAlumnos } from '../../common/Interfaces';
+import { IAlumnos } from '../../../common/Interfaces';
 
 //*- SERVICIOS DE ALUMNO :
 import { AlumnosService } from 'src/Services/Alumnos/alumnos.service';

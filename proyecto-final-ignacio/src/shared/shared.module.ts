@@ -25,27 +25,27 @@ import { PipeNombreApellidoPipe } from '../pipes/pipe-nombre-apellido.pipe';
 import { TitleFontSizeDirective } from '../directives/title-font-size.directive';
 
 //*- Components :
-import { FooterComponent } from '../components/footer/footer.component';
-import { AlumnosComponent } from '../components/alumnos/alumnos.component';
-import { SidenavComponent } from 'src/components/sidenav/sidenav.component';
-import { DialogoComponent } from 'src/components/dialogo/dialogo.component';
-import { DialogoCursosComponent } from 'src/components/dialogo-cursos/dialogo-cursos.component';
-import { CursosComponent } from 'src/components/cursos/cursos.component';
-import { DetailAlumnoComponent } from 'src/components/detail-alumno/detail-alumno.component';
-import { DetailCursosComponent } from 'src/components/detail-cursos/detail-cursos.component';
-import { LoginComponent } from '../components/login/login.component';
-import { InscripcionesComponent } from 'src/components/inscripciones/inscripciones.component';
-import { AdministradoresComponent } from 'src/components/administradores/administradores.component';
-import { DetailAdminComponent } from 'src/components/detail-admin/detail-admin.component';
-import { DialogoAdministradoresComponent } from 'src/components/dialogo-administradores/dialogo-administradores.component';
-import { LoginEstudianteComponent } from 'src/components/login-estudiante/login-estudiante.component';
-import { PerfilAlumnoComponent } from 'src/components/perfil-alumno/perfil-alumno.component';
-import { HomeComponent } from 'src/components/home/home.component';
-import { CursosDeAlumnosComponent } from 'src/components/cursos-de-alumnos/cursos-de-alumnos.component';
-import { DialogoInscripcionesComponent } from 'src/components/dialogo-inscripciones/dialogo-create/dialogo-Create-inscripciones.component';
-import { DialogoDeleteComponent } from 'src/components/dialogo-inscripciones/dialogo-delete/dialogo-delete.component';
-import { DialogoEditComponent } from 'src/components/dialogo-inscripciones/dialogo-edit/dialogo-edit.component';
-import { EstadisticasComponent } from 'src/components/estadisticas/estadisticas.component';
+import { FooterComponent } from '../app/components/footer/footer.component';
+import { AlumnosComponent } from '../app/components/alumnos/alumnos.component';
+import { SidenavComponent } from 'src/app/components/sidenav/sidenav.component';
+import { DialogoComponent } from 'src/app/components/dialogo/dialogo.component';
+import { DialogoCursosComponent } from 'src/app/components/dialogo-cursos/dialogo-cursos.component';
+import { CursosComponent } from 'src/app/components/cursos/cursos.component';
+import { DetailAlumnoComponent } from 'src/app/components/detail-alumno/detail-alumno.component';
+import { DetailCursosComponent } from 'src/app/components/detail-cursos/detail-cursos.component';
+import { LoginComponent } from '../app/components/login/login.component';
+import { InscripcionesComponent } from 'src/app/components/inscripciones/inscripciones.component';
+import { AdministradoresComponent } from 'src/app/components/administradores/administradores.component';
+import { DetailAdminComponent } from 'src/app/components/detail-admin/detail-admin.component';
+import { DialogoAdministradoresComponent } from 'src/app/components/dialogo-administradores/dialogo-administradores.component';
+import { LoginEstudianteComponent } from 'src/app/components/login-estudiante/login-estudiante.component';
+import { PerfilAlumnoComponent } from 'src/app/components/perfil-alumno/perfil-alumno.component';
+import { HomeComponent } from 'src/app/components/home/home.component';
+import { CursosDeAlumnosComponent } from 'src/app/components/cursos-de-alumnos/cursos-de-alumnos.component';
+import { DialogoInscripcionesComponent } from 'src/app/components/dialogo-inscripciones/dialogo-create/dialogo-Create-inscripciones.component';
+import { DialogoDeleteComponent } from 'src/app/components/dialogo-inscripciones/dialogo-delete/dialogo-delete.component';
+import { DialogoEditComponent } from 'src/app/components/dialogo-inscripciones/dialogo-edit/dialogo-edit.component';
+import { EstadisticasComponent } from 'src/app/components/estadisticas/estadisticas.component';
 
 //*- import ngx-translate and the http loader
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';

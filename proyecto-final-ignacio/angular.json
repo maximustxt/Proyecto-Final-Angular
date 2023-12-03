@@ -49,8 +49,8 @@
               "outputHashing": "all",
               "fileReplacements": [
                 {
-                  "replace": "src/Enviroments/Enviroments.local.ts",
-                  "with": "src/Enviroments/Enviroments.prod.ts"
+                  "replace": "src/Enviroments/URL_LOCAL.ts",
+                  "with": "src/Enviroments/URL_PRODUCCION.ts"
                 }
               ]
             },

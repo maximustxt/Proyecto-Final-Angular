@@ -1,6 +1,6 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import ObtenerAlumno from 'src/components/LocalStorage/Alumnos/ObtenerAlumno';
+import ObtenerAlumno from 'src/app/components/LocalStorage/Alumnos/ObtenerAlumno';
 
 export const authAlumnoGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);

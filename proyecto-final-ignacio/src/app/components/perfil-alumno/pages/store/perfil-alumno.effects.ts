@@ -5,7 +5,7 @@ import { of } from 'rxjs';
 import { PerfilAlumnoActions } from './perfil-alumno.actions';
 import { AlumnosService } from 'src/Services/Alumnos/alumnos.service';
 //* LOCAL STORAGE :
-import ObtenerAlumno from 'src/components/LocalStorage/Alumnos/ObtenerAlumno';
+import ObtenerAlumno from 'src/app/components/LocalStorage/Alumnos/ObtenerAlumno';
 
 @Injectable()
 export class PerfilAlumnoEffects {

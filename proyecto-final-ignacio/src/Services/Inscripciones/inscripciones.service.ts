@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { URL_PRODUCCION } from 'src/Enviroments/Enviroments.prod';
+import { URL_PRODUCCION } from 'src/Enviroments/URL_PRODUCCION';
 
 @Injectable({
   providedIn: 'root',

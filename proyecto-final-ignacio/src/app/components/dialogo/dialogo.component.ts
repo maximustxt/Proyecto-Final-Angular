@@ -10,7 +10,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
 
 //*- INTERFACE :
-import { IAlumnos } from '../../common/Interfaces';
+import { IAlumnos } from '../../../common/Interfaces';
 
 //*- SERVICES :
 import { AlumnosService } from 'src/Services/Alumnos/alumnos.service';
